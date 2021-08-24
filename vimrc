@@ -115,7 +115,7 @@ let g:tex_flavor='latex'
 "==========================================
 "
 " Adding plugins:
-"   cd ~/control/dotfiles/.vim/pack/romes/start
+"   cd ~/control/dotfiles/public/.vim/pack/romes/start
 "   git submodule add https://github.com/pluginowner/plugin
 "   (alternatively run .vim/install-plugin)
 " Updating plugins:

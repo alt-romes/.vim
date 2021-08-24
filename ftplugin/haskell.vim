@@ -3,5 +3,3 @@
 
 " disable ghc integration
 let b:ale_linters = ['cabal_ghc', 'ghc_mod', 'hdevtools', 'hie', 'hlint', 'hls', 'stack_build', 'stack_ghc']
-
-packadd vim-hoogle
