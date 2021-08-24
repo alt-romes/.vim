@@ -18,26 +18,19 @@ syntax on
 set termguicolors     " enable true colors support
 
 " settings for schemes
-let g:gruvbox_italic = 1
-let g:embark_terminal_italics = 1
-let g:onedark_terminal_italics = 1
-" enable themes
-packadd! dracula
-packadd! embark
-packadd! onedark
+
+" enable themes (packadd! name)
+
 
 " choose random colorscheme
-let ltime = 5 " localtime()
-let colorschemes = ['xcodedark', 'xcodelight', 'gruvbox', 'Tomorrow', 'Tomorrow-Night', 'Tomorrow-Night-Eighties', 'dracula', 'embark', 'onedark', 'spacecamp', 'srcery', 'nord', 'default', 'default']
-let linecolors = ['darcula', 'ayu_light', 'gruvbox', 'ayu_light', 'darcula', 'darcula', 'dracula', 'embark', 'onedark', 'default', 'srcery', 'nord', 'default', 'solarized']
+let ltime = 0 " localtime()
+let colorschemes = ['default']
+let linecolors = ['default']
 " set lightline bar color (use it on the #plugin section)
 let lightlinecolortheme = linecolors[ltime % (len(linecolors)) ]
 " set colorscheme
 execute 'colorscheme' colorschemes[ltime % (len(colorschemes)) ]
 
-
-" Set vim background transparent
-" hi Normal guibg=NONE ctermbg=NONE
 
 "==========================================
 "|            Custom Commands             |
@@ -53,7 +46,7 @@ command RGitShortlog :!git shortlog -n %
 "|            Customization               |
 "==========================================
 
-" copy to os clipboard with <leader>c
+" copy to macOS clipboard with <leader>c
 map <silent> <leader>c :w !pbcopy<CR><CR>
 
 " autoindent
@@ -114,22 +107,26 @@ source $VIMRUNTIME/menu.vim
 set wildmenu    " :h wildmenu
 set cpo-=<      " compatability option which i don't really understand
 
+" recognize .tex as latex
+let g:tex_flavor='latex'
+
 "==========================================
 "|               Plugins                  |
 "==========================================
 "
 " Adding plugins:
-"   cd ~/.vim/pack/romes/start
-"   config submodule add https://github.com/pluginowner/plugin
+"   cd ~/control/dotfiles/.vim/pack/romes/start
+"   git submodule add https://github.com/pluginowner/plugin
+"   (alternatively run .vim/install-plugin)
 " Updating plugins:
-"   config submodule update
+"   git submodule update
 
 
 """ Ale: LSP integration:
 
 " Toggle ALE - start disabled by default, use \a (leader+a)
 let g:ale_enabled = 0
-nmap <silent> <leader>a :ALEToggle<CR>
+nmap <silent> <leader>a :ALEEnable<CR>
 
 " Show error/warning detail with leader+h
 nmap <silent> <leader>h :ALEDetail<CR>
@@ -168,13 +165,7 @@ let g:snipMate = { 'snippet_version' : 1 }
 """ vim-commentary : creates comments with 'gc'
 
 
-""" vim-jsdoc : creates doc for js
-
-" writes jsdoc above the line where the cursor is with leader+d
-nmap <silent> <leader>d <Plug>(jsdoc)
-
-
-""" vim-auto-pair creates two brackets on 1 + enter
+""" vim-auto-pair
 
 
 """ vim-polyglot : syntax highlighting for a lot of langs
@@ -185,42 +176,11 @@ set nocompatible
 "disable shiftwidth changing
 let g:polyglot_disabled = ['autoindent']
 
-
-""" vim-fold-cycle : cycles through folds using Enter and Backspace
-
-" redefine mappings
-let g:fold_cycle_default_mapping = 0 "disable default mappings
-nmap <Tab><Tab> <Plug>(fold-cycle-open)
-nmap <S-Tab><S-Tab> <Plug>(fold-cycle-close)
-
-" Won't close when max fold is opened
-let g:fold_cycle_toggle_max_open  = 0
-
-" Won't open when max fold is closed
-let g:fold_cycle_toggle_max_close = 0
-
-
-""" vim-anyfold : folding plugin
-
-" required
-filetype plugin indent on
-
-" activate for all filetypes
-let blacklist = []
-autocmd Filetype * if index(blacklist, &ft) < 0 | AnyFoldActivate               
-
-" start with all folds open
-set foldlevel=7
-
+" required?
+" filetype plugin indent on
 
 """ vim-snipmate | dependencies: tlib_vim, vim-addon-mw-utils, vim-snippets
 " no commands
-
-
-""" Tagbar (changed from Taglist and am happy about it)
-
-" Bind Tagbar to leader l
-nnoremap <leader>l :TagbarToggle<CR>
 
 
 """ Light Line
@@ -252,6 +212,7 @@ function! LightlineWordCount() abort
   return wordcount().words . ' words'
 endfunction
 
+" TODO: (WIP)
       " \   'randsentence': 'GetRandomSentence',
 function! GetRandomSentence() abort
   return system("echo -n 'hello world'")
@@ -271,13 +232,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 " Bind Goyo to leader g
 nnoremap <leader>g :Goyo<cr>
 
-" Move to next grammarous error
-nmap <F5> <Plug>(grammarous-move-to-next-error)
-
 "==========================================
 "|            Optional Plugins            |
 "==========================================
 "    (start them with :packadd plugin)
-
-" recognize .tex as latex
-let g:tex_flavor='latex'
