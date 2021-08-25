@@ -20,12 +20,12 @@ set termguicolors     " enable true colors support
 " settings for schemes
 
 " enable themes (packadd! name)
-
+packadd! wal.vim
 
 " choose random colorscheme
-let ltime = 0 " localtime()
-let colorschemes = ['default']
-let linecolors = ['default']
+let ltime = 1 " localtime()
+let colorschemes = ['default', 'wal']
+let linecolors = ['default', 'wal']
 " set lightline bar color (use it on the #plugin section)
 let lightlinecolortheme = linecolors[ltime % (len(linecolors)) ]
 " set colorscheme
