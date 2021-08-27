@@ -192,6 +192,9 @@ set laststatus=2
 set noshowmode
 
 " Extra components
+if !isdirectory("~/.cache/wal/sequences")
+    let lightlinecolortheme = "default"
+endif
 let g:lightline = {
       \ 'colorscheme': lightlinecolortheme,
       \ 'active': {
