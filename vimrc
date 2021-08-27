@@ -17,6 +17,9 @@ syntax on
 
 set termguicolors     " enable true colors support
 
+" enable themes (packadd! name)
+packadd! wal.vim
+
 " settings for schemes
 
 " choose random colorscheme
@@ -233,9 +236,3 @@ nnoremap <leader>g :Goyo<cr>
 "|            Optional Plugins            |
 "==========================================
 "    (start them with :packadd plugin)
-
-" enable themes (packadd! name)
-" clear highlight (which is broken) from line number and ~ in blank lines
-hi clear LineNr
-hi clear NonText
-packadd! wal.vim
