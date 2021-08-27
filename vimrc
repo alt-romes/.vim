@@ -19,9 +19,6 @@ set termguicolors     " enable true colors support
 
 " settings for schemes
 
-" enable themes (packadd! name)
-packadd! wal.vim
-
 " choose random colorscheme
 let ltime = 1 " localtime()
 let colorschemes = ['default', 'wal']
@@ -192,9 +189,6 @@ set laststatus=2
 set noshowmode
 
 " Extra components
-if !isdirectory("~/.cache/wal/sequences")
-    let lightlinecolortheme = "default"
-endif
 let g:lightline = {
       \ 'colorscheme': lightlinecolortheme,
       \ 'active': {
@@ -239,3 +233,9 @@ nnoremap <leader>g :Goyo<cr>
 "|            Optional Plugins            |
 "==========================================
 "    (start them with :packadd plugin)
+
+" enable themes (packadd! name)
+" clear highlight (which is broken) from line number and ~ in blank lines
+hi clear LineNr
+hi clear NonText
+packadd! wal.vim
