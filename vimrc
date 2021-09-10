@@ -110,6 +110,10 @@ set cpo-=<      " compatability option which i don't really understand
 " recognize .tex as latex
 let g:tex_flavor='latex'
 
+" enable project specific .vimrc
+set exrc
+set secure
+
 "==========================================
 "|               Plugins                  |
 "==========================================
@@ -236,3 +240,5 @@ nnoremap <leader>g :Goyo<cr>
 "|            Optional Plugins            |
 "==========================================
 "    (start them with :packadd plugin)
+
+
