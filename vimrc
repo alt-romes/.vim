@@ -3,6 +3,12 @@
 "==========================================
 
 " cheatsheet
+set relativenumber
+
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+nnoremap <leader>sv :source $MYVIMRC<cr>
+
+iabbrev adn and
 
 " > insert non-ascii value: in insert mode press ctrl+V followed by x00-FF (max)
 " :help i_CTRL-V_digit
@@ -47,7 +53,7 @@ command RGitShortlog :!git shortlog -n %
 "==========================================
 
 " copy to macOS clipboard with <leader>c
-map <silent> <leader>c :w !pbcopy<CR><CR>
+noremap <silent> <leader>c :w !pbcopy<CR><CR>
 
 " autoindent
 set autoindent
@@ -94,7 +100,7 @@ filetype plugin on
 " imap <C-j> <C-X><C-O>
 
 " create command to print sentence from languages/sentences.db
-map <silent> <leader>s :echom system("sentences -o -n")<CR>
+noremap <silent> <leader>s :echom system("sentences -o -n")<CR>
 
 " create command to switch .asm syntax to rgbasm
 " map <silent> <leader>s :set syntax=rgbasm<CR>
@@ -130,10 +136,10 @@ set secure
 
 " Toggle ALE - start disabled by default, use \a (leader+a)
 let g:ale_enabled = 0
-nmap <silent> <leader>a :ALEEnable<CR>
+nnoremap <silent> <leader>a :ALEEnable<CR>
 
 " Show error/warning detail with leader+h
-nmap <silent> <leader>h :ALEDetail<CR>
+nnoremap <silent> <leader>h :ALEDetail<CR>
 
 " let g:ale_completion_enabled = 1 # don't enable completion, just show it
 " when omnifunc is pressed (ctrl+j or ctrl+x>ctrl+o)
@@ -155,7 +161,7 @@ let g:ale_change_sign_column_color = 0
 " let g:ale_set_highlights = 0
 
 " Create shortcut to run ALEHover (ctrl+k) and switch panes to it
-nmap <silent> <C-K> :ALEHover<CR><C-W>k
+nnoremap <silent> <C-K> :ALEHover<CR><C-W>k
 
 " configure messages
 let g:ale_echo_msg_error_str = 'E'
