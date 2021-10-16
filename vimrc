@@ -10,9 +10,20 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 
 iabbrev adn and
 
+command! MakeTags !ctags -R .
+" NOW WE CAN:
+" use Ctrl+] to jump to tag under cursor
+" use g(Ctrl+]) for ambiguous tags
+" use Ctrl+t to jump the tag stack
+
+set path+=**
+
+" Move visual selection
+vnoremap J :m '>+1<cr>gv=gv
+vnoremap K :m '<-2<cr>gv=gv
+
 " > insert non-ascii value: in insert mode press ctrl+V followed by x00-FF (max)
 " :help i_CTRL-V_digit
-
 
 "==========================================
 "|               Colors                   |
@@ -52,17 +63,25 @@ command RGitShortlog :!git shortlog -n %
 "|            Customization               |
 "==========================================
 
+" enter the current millenium
+set nocompatible
+
+" enable filetype detection
+filetype on
+
+" enable plugins for specific filetypes
+filetype plugin indent on
+
 " copy to macOS clipboard with <leader>c
 noremap <silent> <leader>c :w !pbcopy<CR><CR>
 
-" autoindent
 set autoindent
 
 " 1 tab = 4 spaces
 set sw:4 ts:4 expandtab
 
 " numbered lines
-set nu
+set number
 
 " set no wrap so lines overflow border of screen
 set nowrap
@@ -88,14 +107,8 @@ set undofile
 " specify undo directory
 set undodir=$HOME/.vim/undofiles
 
-" enable filetype detection | required by: taglist
-filetype on
-
-" enable plugins for specific filetypes | required by: cvim
-filetype plugin on
-
 " enable autocomplete with syntax (usage: <C-X><C-O>)
-" set omnifunc=syntaxcomplete#Complete " use Ale completion below...
+set omnifunc=syntaxcomplete#Complete " use Ale completion below...
 " use Ctrl + j for omnicomplete " disabled, use <C-X><C-O>
 " imap <C-j> <C-X><C-O>
 
@@ -136,14 +149,13 @@ set secure
 
 " Toggle ALE - start disabled by default, use \a (leader+a)
 let g:ale_enabled = 0
-nnoremap <silent> <leader>a :ALEEnable<CR>
+nnoremap <silent> <leader>a :ALEEnable<CR>:set omnifunc=ale#completion#OmniFunc<CR>
 
 " Show error/warning detail with leader+h
 nnoremap <silent> <leader>h :ALEDetail<CR>
 
 " let g:ale_completion_enabled = 1 # don't enable completion, just show it
-" when omnifunc is pressed (ctrl+j or ctrl+x>ctrl+o)
-set omnifunc=ale#completion#OmniFunc
+" when omnifunc is pressed (ctrl+x>ctrl+o)
 let g:ale_completion_autoimport = 1 " automatic import from external modules
 
 " show suggestions
@@ -180,14 +192,8 @@ let g:snipMate = { 'snippet_version' : 1 }
 
 """ vim-polyglot : syntax highlighting for a lot of langs
 
-" required
-set nocompatible
-
 "disable shiftwidth changing
 let g:polyglot_disabled = ['autoindent']
-
-" required?
-" filetype plugin indent on
 
 """ vim-snipmate | dependencies: tlib_vim, vim-addon-mw-utils, vim-snippets
 " no commands
