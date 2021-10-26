@@ -18,6 +18,14 @@ command! MakeTags !ctags -R .
 
 set path+=**
 
+nnoremap <leader>cl :!wal -f random_light<cr><cr>
+nnoremap <leader>cd :!wal -f random<cr><cr>
+
+" when :set spell (spell is enabled), completion will use dictionary keywords
+" enable spell (\es)
+nnoremap <leader>es :set spell<cr>
+" set complete+=,kspell # use with ctrl+x+k
+
 " Move visual selection
 vnoremap J :m '>+1<cr>gv=gv
 vnoremap K :m '<-2<cr>gv=gv
@@ -66,10 +74,7 @@ command RGitShortlog :!git shortlog -n %
 " enter the current millenium
 set nocompatible
 
-" enable filetype detection
-filetype on
-
-" enable plugins for specific filetypes
+" enable filetype detection, indention and plugins for specific filetypes
 filetype plugin indent on
 
 " copy to macOS clipboard with <leader>c
@@ -243,14 +248,21 @@ nnoremap <leader>t :NERDTreeToggle %:p:h<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 
+""" vim-pandoc-syntax
+
+augroup pandoc_syntax
+    au! BufNewFile,BufFilePre,BufRead *.md set filetype=markdown.pandoc
+augroup END
+
+
 """ Goyo
 
 " Bind Goyo to leader g
 nnoremap <leader>g :Goyo<cr>
 
+
 "==========================================
 "|            Optional Plugins            |
 "==========================================
 "    (start them with :packadd plugin)
-
 
