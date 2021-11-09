@@ -8,3 +8,5 @@ Kripke
 LTL
 structs
 PSPACE
+goroutine
+goroutines

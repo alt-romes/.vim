@@ -214,7 +214,7 @@ set laststatus=2 " enable statusline
 set noshowmode " hide -- INSERT --
 " hi StatusLine ctermfg=black ctermbg=red cterm=none
 " hi StatusLineNC ctermfg=white ctermbg=black cterm=none
-hi User8 ctermfg=black ctermbg=white cterm=bold
+hi User8 ctermfg=black ctermbg=red cterm=none
 hi User1 ctermfg=black ctermbg=magenta cterm=none
 hi User2 ctermfg=NONE ctermbg=NONE
 hi User3 ctermfg=black ctermbg=blue
