@@ -236,3 +236,6 @@ set statusline+=\ %3p%%\        " Percentage
 set statusline+=%4*
 set statusline+=\ %3l:%-2c\     " Line:Column
 set statusline+=%5*
+
+" Comments in italic
+hi Comment cterm=italic
