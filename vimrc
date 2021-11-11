@@ -2,7 +2,11 @@
 "|             romes vimrc                |
 "==========================================
 
-" cheatsheet
+" TODO: (WIP)
+function! GetRandomSentence() abort
+  return system("sentences -...")
+endfunction
+
 set relativenumber
 
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
@@ -11,7 +15,6 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 iabbrev adn and
 
 command! MakeTags !ctags -R .
-" NOW WE CAN:
 " use Ctrl+] to jump to tag under cursor
 " use g(Ctrl+]) for ambiguous tags
 " use Ctrl+t to jump the tag stack
@@ -24,12 +27,12 @@ nnoremap <leader>cd :!wal -f random<cr><cr>
 " when :set spell (spell is enabled), completion will use dictionary keywords
 " enable spell (\es)
 nnoremap <leader>es :set spell<cr>
-" set complete+=,kspell # use with ctrl+x+k
 
 " Move visual selection
 vnoremap J :m '>+1<cr>gv=gv
 vnoremap K :m '<-2<cr>gv=gv
 
+" cheatsheet
 " > insert non-ascii value: in insert mode press ctrl+V followed by x00-FF (max)
 " :help i_CTRL-V_digit
 
@@ -45,27 +48,11 @@ set termguicolors     " enable true colors support
 " enable themes (packadd! name)
 packadd! wal.vim
 
-" settings for schemes
-
 " choose random colorscheme
 let ltime = 1 " localtime()
 let colorschemes = ['default', 'wal']
-let linecolors = ['default', 'wal']
-" set lightline bar color (use it on the #plugin section)
-let lightlinecolortheme = linecolors[ltime % (len(linecolors)) ]
 " set colorscheme
 execute 'colorscheme' colorschemes[ltime % (len(colorschemes)) ]
-
-
-"==========================================
-"|            Custom Commands             |
-"==========================================
-" Start commands with R for romes
-
-" Make background transparent
-command RTransparentBackground hi Normal guibg=NONE ctermbg=NONE
-
-command RGitShortlog :!git shortlog -n %
 
 "==========================================
 "|            Customization               |
@@ -100,14 +87,14 @@ set ruler
 " " highlight search results
 " set hlsearch
 
-" " remove highlight from search with leader+space
-" nnoremap <nowait><silent> <leader><ESC> :noh<CR>
-
 " allow mouse scrolling 
 set mouse=a
 
 " persistent undo
 set undofile
+
+" use file-embedded configuration (:h modeline)
+set modeline
 
 " specify undo directory
 set undodir=$HOME/.vim/undofiles
@@ -115,16 +102,12 @@ set undodir=$HOME/.vim/undofiles
 " enable autocomplete with syntax (usage: <C-X><C-O>)
 set omnifunc=syntaxcomplete#Complete " use Ale completion below...
 " use Ctrl + j for omnicomplete " disabled, use <C-X><C-O>
-" imap <C-j> <C-X><C-O>
 
 " create command to print sentence from languages/sentences.db
 noremap <silent> <leader>s :echom system("sentences -o -n")<CR>
 
 " create command to switch .asm syntax to rgbasm
 " map <silent> <leader>s :set syntax=rgbasm<CR>
-
-" fix vim polyglot groovy file editing (what does it really do to regex?)
-set re=0
 
 " enable menus
 source $VIMRUNTIME/menu.vim
@@ -143,12 +126,13 @@ set secure
 "==========================================
 "
 " Adding plugins:
-"   cd ~/control/dotfiles/public/.vim/pack/romes/start
+"   cd ~/.vim/pack/romes/start
 "   git submodule add https://github.com/pluginowner/plugin
-"   (alternatively run .vim/install-plugin)
+"   (alternatively run .vim/install-plugin.sh)
 " Updating plugins:
 "   git submodule update
 
+" --------------------------------
 
 """ Ale: LSP integration:
 
@@ -185,61 +169,21 @@ let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%severity%] %s : %linter%'
 
-
-""" vim-snipmate : enable version 1 parser
-let g:snipMate = { 'snippet_version' : 1 }
-
-""" vim-commentary : creates comments with 'gc'
-
-
-""" vim-auto-pair
-
-
-""" vim-polyglot : syntax highlighting for a lot of langs
+" --------------------------------
 
 "disable shiftwidth changing
 let g:polyglot_disabled = ['autoindent']
 
+" fix vim polyglot groovy file editing (what does it really do to regex?)
+set re=0
+
+" --------------------------------
+
 """ vim-snipmate | dependencies: tlib_vim, vim-addon-mw-utils, vim-snippets
-" no commands
+" enable version 1 parser
+let g:snipMate = { 'snippet_version' : 1 }
 
-
-""" Light Line
-
-" Display bar
-set laststatus=2
-
-" Hide -- INSERT --
-set noshowmode
-
-" Extra components
-let g:lightline = {
-      \ 'colorscheme': lightlinecolortheme,
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'readonly', 'filename', 'modified' ] ],
-      \   'right': [ [ 'lineinfo' ],
-      \              [ 'percent' ],
-      \              [  'randsentence', 'fileformat', 'fileencoding', 'filetype', 'wordcount' ] ]
-      \ },
-      \ 'component': {
-      \   'romes': 'hello there'
-      \ },
-      \ 'component_function': {
-      \   'wordcount': 'LightlineWordCount',
-      \ },
-      \ }
-function! LightlineWordCount() abort
-  return wordcount().words . ' words'
-endfunction
-
-" TODO: (WIP)
-      " \   'randsentence': 'GetRandomSentence',
-function! GetRandomSentence() abort
-  return system("echo -n 'hello world'")
-endfunction
-
-""" NERDTree
+" --------------------------------
 
 " Bind NERDTreeToggle to leader t, and open the directory for the file being edit
 nnoremap <leader>t :NERDTreeToggle %:p:h<CR>
@@ -247,22 +191,51 @@ nnoremap <leader>t :NERDTreeToggle %:p:h<CR>
 " Close window when NERDTree is the only open window
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
+" --------------------------------
 
-""" vim-pandoc-syntax
-
+" Set filetype for pandoc markdown
 augroup pandoc_syntax
     au! BufNewFile,BufFilePre,BufRead *.md set filetype=markdown.pandoc
 augroup END
 
-
-""" Goyo
+" --------------------------------
 
 " Bind Goyo to leader g
 nnoremap <leader>g :Goyo<cr>
 
+" --------------------------------
 
-"==========================================
-"|            Optional Plugins            |
-"==========================================
-"    (start them with :packadd plugin)
+" Set status line display
+let mode_map = {
+      \     'n': 'NORMAL', 'i': 'INSERT', 'R': 'REPLACE', 'v': 'VISUAL', 'V': 'V-LINE', "\<C-v>": 'V-BLOCK',
+      \     'c': 'COMMAND', 's': 'SELECT', 'S': 'S-LINE', "\<C-s>": 'S-BLOCK', 't': 'TERMINAL'
+      \   }
+set laststatus=2 " enable statusline
+set noshowmode " hide -- INSERT --
+" hi StatusLine ctermfg=black ctermbg=red cterm=none
+" hi StatusLineNC ctermfg=white ctermbg=black cterm=none
+hi User8 ctermfg=black ctermbg=red cterm=none
+hi User1 ctermfg=black ctermbg=magenta cterm=none
+hi User2 ctermfg=NONE ctermbg=NONE
+hi User3 ctermfg=black ctermbg=blue
+hi User4 ctermfg=black ctermbg=cyan
+hi User5 ctermfg=black ctermbg=black
+set statusline=%8*
+set statusline+=\ %{mode_map[mode()]}\   " Mode
+set statusline+=%1*
+set statusline+=\ %f\           " File name
+set statusline+=%2*  
+set statusline+=%=              " Switch to right-side
+set statusline+=\ %{&fileencoding?&fileencoding:&encoding}\  
+set statusline+=\| 
+set statusline+=\ %{&filetype}\  
+set statusline+=\| 
+set statusline+=\ %{wordcount().words}\ words\   
+set statusline+=%3*
+set statusline+=\ %3p%%\        " Percentage
+set statusline+=%4*
+set statusline+=\ %3l:%-2c\     " Line:Column
+set statusline+=%5*
 
+" Comments in italic
+hi Comment cterm=italic
