@@ -9,6 +9,9 @@ endfunction
 
 set relativenumber
 
+" Fix with first dictionary option (don't forget :set spell)
+nnoremap <leader>f 1z=
+
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 
@@ -23,10 +26,6 @@ set path+=**
 
 nnoremap <leader>cl :!wal -f random_light<cr><cr>
 nnoremap <leader>cd :!wal -f random<cr><cr>
-
-" when :set spell (spell is enabled), completion will use dictionary keywords
-" enable spell (\es)
-nnoremap <leader>es :set spell<cr>
 
 " Move visual selection
 vnoremap J :m '>+1<cr>gv=gv
@@ -213,7 +212,6 @@ let mode_map = {
 set laststatus=2 " enable statusline
 set noshowmode " hide -- INSERT --
 " hi StatusLine ctermfg=black ctermbg=red cterm=none
-" hi StatusLineNC ctermfg=white ctermbg=black cterm=none
 hi User8 ctermfg=black ctermbg=red cterm=none
 hi User1 ctermfg=black ctermbg=magenta cterm=none
 hi User2 ctermfg=NONE ctermbg=NONE
@@ -236,6 +234,26 @@ set statusline+=\ %3p%%\        " Percentage
 set statusline+=%4*
 set statusline+=\ %3l:%-2c\     " Line:Column
 set statusline+=%5*
+hi StatusLineNC ctermbg=none cterm=none ctermfg=white
 
 " Comments in italic
 hi Comment cterm=italic
+
+" Tabline
+hi TabLine      ctermfg=white  ctermbg=black     cterm=NONE
+hi TabLineFill  ctermfg=white  ctermbg=black     cterm=NONE
+hi TabLineSel   ctermfg=black  ctermbg=white  cterm=NONE
+
+" Cucumbertables.vim :: tpope script to create tables using Tabular
+inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
+
+function! s:align()
+  let p = '^\s*|\s.*\s|\s*$'
+  if exists(':Tabularize') && getline('.') =~# '^\s*|' && (getline(line('.')-1) =~# p || getline(line('.')+1) =~# p)
+    let column = strlen(substitute(getline('.')[0:col('.')],'[^|]','','g'))
+    let position = strlen(matchstr(getline('.')[0:col('.')],'.*|\s*\zs.*'))
+    Tabularize/|/l1
+    normal! 0
+    call search(repeat('[^|]*|',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
+  endif
+endfunction
