@@ -42,7 +42,7 @@ vnoremap K :m '<-2<cr>gv=gv
 " syntax highlighting and colors
 syntax on
 
-set termguicolors     " enable true colors support
+" set termguicolors     " enable true colors support
 
 " enable themes (packadd! name)
 packadd! wal.vim
