@@ -35,10 +35,6 @@ nnoremap <leader>cd :!wal -f random<cr><cr>
 vnoremap J :m '>+1<cr>gv=gv
 vnoremap K :m '<-2<cr>gv=gv
 
-" cheatsheet
-" > insert non-ascii value: in insert mode press ctrl+V followed by x00-FF (max)
-" :help i_CTRL-V_digit
-
 "==========================================
 "|               Colors                   |
 "==========================================
@@ -90,8 +86,6 @@ set nowrap
 " search ignore case
 set ignorecase
 
-" right bottom see cursor position
-set ruler
 
 " " highlight search results
 " set hlsearch
@@ -110,7 +104,6 @@ set undodir=$HOME/.vim/undofiles
 
 " enable autocomplete with syntax (usage: <C-X><C-O>)
 set omnifunc=syntaxcomplete#Complete " use Ale completion below...
-" use Ctrl + j for omnicomplete " disabled, use <C-X><C-O>
 
 " create command to print sentence from languages/sentences.db
 noremap <silent> <leader>s :echom system("sentences -o -n")<CR>
@@ -186,12 +179,6 @@ set re=0
 
 " --------------------------------
 
-""" vim-snipmate | dependencies: tlib_vim, vim-addon-mw-utils, vim-snippets
-" enable version 1 parser
-let g:snipMate = { 'snippet_version' : 1 }
-
-" --------------------------------
-
 " Bind NERDTreeToggle to leader t, and open the directory for the file being edit
 nnoremap <leader>t :NERDTreeToggle %:p:h<CR>
 
@@ -212,41 +199,6 @@ nnoremap <leader>g :Goyo<cr>
 
 " --------------------------------
 
-" Set status line display
-let mode_map = {
-      \     'n': 'NORMAL', 'i': 'INSERT', 'R': 'REPLACE', 'v': 'VISUAL', 'V': 'V-LINE', "\<C-v>": 'V-BLOCK',
-      \     'c': 'COMMAND', 's': 'SELECT', 'S': 'S-LINE', "\<C-s>": 'S-BLOCK', 't': 'TERMINAL'
-      \   }
-set laststatus=2 " enable statusline
-set noshowmode " hide -- INSERT --
-" hi StatusLine ctermfg=black ctermbg=red cterm=none
-hi User8 ctermfg=black ctermbg=red cterm=none
-hi User1 ctermfg=black ctermbg=magenta cterm=none
-hi User2 ctermfg=NONE ctermbg=NONE
-hi User3 ctermfg=black ctermbg=blue
-hi User4 ctermfg=black ctermbg=cyan
-hi User5 ctermfg=black ctermbg=black
-set statusline=%8*
-set statusline+=\ %{mode_map[mode()]}\   " Mode
-set statusline+=%1*
-set statusline+=\ %f\           " File name
-set statusline+=%2*  
-set statusline+=%=              " Switch to right-side
-set statusline+=\ %{&fileencoding?&fileencoding:&encoding}\  
-set statusline+=\| 
-set statusline+=\ %{&filetype}\  
-set statusline+=\| 
-set statusline+=\ %{wordcount().words}\ words\   
-set statusline+=%3*
-set statusline+=\ %3p%%\        " Percentage
-set statusline+=%4*
-set statusline+=\ %3l:%-2c\     " Line:Column
-set statusline+=%5*
-hi StatusLineNC ctermbg=none cterm=none ctermfg=white
-
-" Comments in italic
-hi Comment cterm=italic
-
 " Cucumbertables.vim :: tpope script to create tables using Tabular
 inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
 
@@ -260,3 +212,6 @@ function! s:align()
         call search(repeat('[^|]*|',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
     endif
 endfunction
+
+" Comments in italic
+hi Comment cterm=italic

@@ -1,22 +1,17 @@
 " Author:       romes
 
-set showtabline=1
+set showtabline=1 " enable tabline when tabs > 1
 
-hi TabLine      ctermfg=white   ctermbg=none   cterm=NONE
-hi TabLineSel   ctermfg=black   ctermbg=yellow   cterm=NONE
-hi TabLineFill  ctermfg=white   ctermbg=none   cterm=NONE
+hi TabLine      ctermfg=white   ctermbg=none   cterm=none
+hi TabLineSel   ctermfg=black   ctermbg=cyan   cterm=italic
+hi TabLineFill  ctermfg=white   ctermbg=none   cterm=none
 
-let g:number_map = ['一', '二', '三', '四', '五', '六', '七', '八', '九', '十']
+let g:ja_number_map = ['一', '二', '三', '四', '五', '六', '七', '八', '九', '十']
 
 function MakeTabLabel(n)
     let buflist = tabpagebuflist(a:n)
     let winnr = tabpagewinnr(a:n)
-    let s:fname = fnamemodify(bufname(buflist[winnr - 1]), ':t')
-    if s:fname == ''
-        return ''
-    else
-        return s:fname .. ' '
-    endif
+    return fnamemodify(bufname(buflist[winnr - 1]), ':t')
 endfunction
 
 function! MakeTabLine()
@@ -39,10 +34,10 @@ function! MakeTabLine()
         let s ..= '%' .. (i + 1) .. 'T'
 
         " display the tab number in japanese
-        let s ..= ' %{g:number_map[' .. (i) .. ']} '
+        let s ..= ' %{g:ja_number_map[' .. (i) .. ']} '
 
         " the label is made by MakeTabLabel()
-        let s ..= '%{MakeTabLabel(' .. (i + 1) .. ')}'
+        let s ..= '%(%{MakeTabLabel(' .. (i + 1) .. ')} %)'
 
         " set modified if any buffer in tab has been modified
         let s:m = 0
@@ -68,4 +63,6 @@ function! MakeTabLine()
 
     return s
 endfunction
+
 set tabline=%!MakeTabLine()
+
