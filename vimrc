@@ -10,7 +10,11 @@ endfunction
 set relativenumber
 
 " Fix with first dictionary option (don't forget :set spell)
-nnoremap <leader>f 1z=
+set spelllang=pt,en_gb
+" <C-l> fixes last spelling mistake
+inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
+
+set autoread
 
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
@@ -56,6 +60,12 @@ execute 'colorscheme' colorschemes[ltime % (len(colorschemes)) ]
 "==========================================
 "|            Customization               |
 "==========================================
+
+set incsearch
+" Use <C-L> to clear the highlighting of :set hlsearch.
+if maparg('<C-L>', 'n') ==# ''
+  nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
+endif
 
 " enter the current millenium
 set nocompatible
@@ -109,9 +119,7 @@ noremap <silent> <leader>s :echom system("sentences -o -n")<CR>
 " map <silent> <leader>s :set syntax=rgbasm<CR>
 
 " enable menus
-source $VIMRUNTIME/menu.vim
 set wildmenu    " :h wildmenu
-set cpo-=<      " compatability option which i don't really understand
 
 " recognize .tex as latex
 let g:tex_flavor='latex'
@@ -239,21 +247,16 @@ hi StatusLineNC ctermbg=none cterm=none ctermfg=white
 " Comments in italic
 hi Comment cterm=italic
 
-" Tabline
-hi TabLine      ctermfg=white  ctermbg=black     cterm=NONE
-hi TabLineFill  ctermfg=white  ctermbg=black     cterm=NONE
-hi TabLineSel   ctermfg=black  ctermbg=white  cterm=NONE
-
 " Cucumbertables.vim :: tpope script to create tables using Tabular
 inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
 
 function! s:align()
-  let p = '^\s*|\s.*\s|\s*$'
-  if exists(':Tabularize') && getline('.') =~# '^\s*|' && (getline(line('.')-1) =~# p || getline(line('.')+1) =~# p)
-    let column = strlen(substitute(getline('.')[0:col('.')],'[^|]','','g'))
-    let position = strlen(matchstr(getline('.')[0:col('.')],'.*|\s*\zs.*'))
-    Tabularize/|/l1
-    normal! 0
-    call search(repeat('[^|]*|',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
-  endif
+    let p = '^\s*|\s.*\s|\s*$'
+    if exists(':Tabularize') && getline('.') =~# '^\s*|' && (getline(line('.')-1) =~# p || getline(line('.')+1) =~# p)
+        let column = strlen(substitute(getline('.')[0:col('.')],'[^|]','','g'))
+        let position = strlen(matchstr(getline('.')[0:col('.')],'.*|\s*\zs.*'))
+        Tabularize/|/l1
+        normal! 0
+        call search(repeat('[^|]*|',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
+    endif
 endfunction
