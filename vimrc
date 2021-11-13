@@ -199,7 +199,7 @@ nnoremap <leader>g :Goyo<cr>
 
 " --------------------------------
 
-" Cucumbertables.vim :: tpope script to create tables using Tabular
+" cucumbertables.vim :: tpope script to create tables using Tabular
 inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
 
 function! s:align()

@@ -2,9 +2,9 @@
 
 set showtabline=1 " enable tabline when tabs > 1
 
-hi TabLine      ctermfg=white   ctermbg=none   cterm=none
-hi TabLineSel   ctermfg=black   ctermbg=cyan   cterm=italic
-hi TabLineFill  ctermfg=white   ctermbg=none   cterm=none
+hi! link TabLineSel Search
+hi TabLine      ctermfg=15   ctermbg=none   cterm=none
+hi TabLineFill  ctermfg=15   ctermbg=none   cterm=none
 
 let g:ja_number_map = ['一', '二', '三', '四', '五', '六', '七', '八', '九', '十']
 
@@ -58,7 +58,7 @@ function! MakeTabLine()
 
     " right-align the label to close the current tab page
     if tabpagenr('$') > 1
-        let s .= '%=%#TabLineSel#%999X'
+        let s .= '%=%#TabLineSel#%999X[X]'
     endif
 
     return s
