@@ -2,9 +2,9 @@
 
 set showtabline=1
 
-hi TabLine      ctermfg=white   ctermbg=black   cterm=NONE
-hi TabLineFill  ctermfg=white   ctermbg=black   cterm=NONE
-hi TabLineSel   ctermfg=black   ctermbg=white   cterm=NONE
+hi TabLine      ctermfg=white   ctermbg=none   cterm=NONE
+hi TabLineSel   ctermfg=black   ctermbg=yellow   cterm=NONE
+hi TabLineFill  ctermfg=white   ctermbg=none   cterm=NONE
 
 let g:number_map = ['一', '二', '三', '四', '五', '六', '七', '八', '九', '十']
 
