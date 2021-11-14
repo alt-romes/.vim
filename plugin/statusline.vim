@@ -33,11 +33,14 @@ endfunction
 
 set statusline=%1*\ %{mode_map[mode()]}\      " Mode
 
-set statusline+=%0*%(\ %r%)                   " Read-only flag
-set statusline+=\ %t\                         " File name
+set statusline+=%0*\ %t\                      " File name
 set statusline+=%(%M\ %)                      " Modified flag
 
 set statusline+=%2*\ %n\                      " Buffer number
+
+set statusline+=%0*%(\ %r%)                   " Read-only flag
+set statusline+=%(\ %h%)                      " Help flag
+set statusline+=%(\ %w%)                      " Preview flag
 
 set statusline+=%0*%=                         " Switch to right-side
 
