@@ -54,8 +54,8 @@ nnoremap <silent> <leader>h :ALEDetail<CR>
 " :<leader>k: print information about the symbol at the cursor
 " # TODO: somehow remap to :K: (as done with manpages)
 nnoremap <silent> <C-K> :ALEHover<CR><C-W>k
-" :<leader>t: Toggle NERDTree with the directory closest to the file being edited
-nnoremap <leader>t :NERDTreeToggle %:p:h<CR>
+" :<leader>t: Toggle netrw file browser in the directory of the file (todo: toggle())
+nnoremap <leader>t :Lexplore %:p:h<CR>
 " :<leader>g: Toggle Goyo
 nnoremap <leader>g :Goyo<cr>
 
@@ -91,6 +91,14 @@ vnoremap K :m '<-2<cr>gv=gv
 " Updating plugins:
 "   git submodule update --remote --recursive
 
+" ======== Netrw =============== "
+
+let g:netrw_banner = 0       | " Disable netrw banner
+let g:netrw_liststyle = 3    | " Tree style listing
+let g:netrw_browse_split = 4 | " Open file in previous window by default
+let g:netrw_winsize = 20     | " Set initial size of new windows to 20%
+
+
 " ======== ALE ================= "
 
 " Disable ALE by default
@@ -106,6 +114,9 @@ let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%severity%] %s : %linter%'
 
+
+" ======== To Clean Up =========
+
 " let g:ale_completion_enabled = 1 # don't enable completion, just show it
 " when omnifunc is pressed (ctrl+x>ctrl+o)
 let g:ale_completion_autoimport = 1 " automatic import from external modules
@@ -116,18 +127,8 @@ let g:ale_lsp_suggestions = 1
 " disable background color on the sign column
 let g:ale_change_sign_column_color = 0
 
-" --------------------------------
-
 "disable shiftwidth changing
 let g:polyglot_disabled = ['autoindent']
-
-
-" --------------------------------
-
-" Close window when NERDTree is the only open window
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
-" --------------------------------
 
 " Set filetype for pandoc markdown
 augroup pandoc_syntax
