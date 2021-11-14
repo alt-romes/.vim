@@ -1,38 +1,39 @@
-"==========================================
-"|             romes vimrc                |
-"==========================================
+" romes' vimrc
+" Author: romes
+
+set nocompatible                          | " Enter the current millennium
+
+filetype plugin indent on                 | " Detect filetype and load according plugins
+syntax on                                 | " Enable syntax highlighting
+
+set number relativenumber                 | " Set relative numbered lines
+set expandtab tabstop=4 shiftwidth=4      | " Indent by 4 spaces
+set hlsearch ignorecase incsearch         | " Highlight case-insensitive search while typing
+set wildmenu                              | " Display command-line completion menu
+set mouse=a                               | " Enable all mouse modes
+set nowrap sidescroll=12 sidescrolloff=4  | " Disable line wrapping and set smoother horizontal scroll
+set autoread                              | " Automatically re-read files changed outside if not changed inside vim
+set autoindent                            | " Indent according to previous line.
+set modeline modelines=5                  | " Check first and last file lines for modelines (that :set options)
+set exrc secure                           | " Read current directory .vimrc (with security-related limitations)
+set spelllang=pt_pt,en_gb                 | " Spell languages to use when spell checking (:set spell)
+set regexpengine=0                        | " Automatically select regexp engine
+set undofile undodir=$HOME/.vim/undofiles | " Persistent undo (:h persistent-undo)
+set backspace=indent,eol,start            | " Make backspace work as expected
+set path+=**                              | " Recursively search subdirectories (when using gf, :tabfind, et cetera)
+
 
 " TODO: (WIP)
 function! GetRandomSentence() abort
   return system("sentences -...")
 endfunction
 
-
-set nocompatible  | " enter the current millenium
-syntax on
-filetype plugin indent on
-set relativenumber | " for normal line numbers use `number` instead
-set shiftwidth=4 tabstop=4 expandtab | " 1 tab = 4 spaces
-set undofile undodir=$HOME/.vim/undofiles
-set ignorecase incsearch hlsearch
-set wildmenu
-set mouse=a
-set nowrap
-set autoread
-set autoindent
-set modeline
-set exrc secure
-set spelllang=pt,en_gb | " (don't forget :set spell)
-set regexpengine=0
-set path+=**
-
-
 " <C-l> fixes last spelling mistake
 inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
 
 " Use <C-L> to clear the highlighting of :set hlsearch.
 if maparg('<C-L>', 'n') ==# ''
-  nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
+    nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
 endif
 
 nnoremap <leader>cl :!wal -f random_light<cr><cr>
