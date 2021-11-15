@@ -114,12 +114,14 @@ let g:ale_floating_preview = 1                                  | " [Testing] Us
 
 let g:polyglot_disabled = ['autoindent']                        | " Disable autoindent from vim-polyglot
 
-" ======== Misc ================
+" ======== Pandoc Markdown =====
 
 " Set filetype for pandoc markdown
 augroup pandoc_syntax
-    au! BufNewFile,BufFilePre,BufRead *.md set filetype=markdown.pandoc
+    au! BufNewFile,BufFilePre,BufRead *.md,*.markdown set filetype=markdown.pandoc
 augroup END
+
+" ======== Misc =================
 
 " cucumbertables.vim :: tpope script to create tables using Tabular
 function! s:align()
