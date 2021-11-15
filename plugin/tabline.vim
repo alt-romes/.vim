@@ -1,8 +1,8 @@
-" Author:       romes
+" Author: romes
 
 set showtabline=1 | " Enable tabline when tabs > 1
 
-hi TabLineSel   ctermfg=black    ctermbg=yellow      cterm=none
+hi TabLineSel   ctermfg=black   ctermbg=yellow cterm=none
 hi TabLine      ctermfg=white   ctermbg=none   cterm=none
 hi TabLineFill  ctermfg=white   ctermbg=none   cterm=none
 
