@@ -71,13 +71,13 @@ vnoremap K :m '<-2<cr>gv=gv
 
 " ======== Netrw =============== "
 
-let g:romes_netrw_enabled = 0                                   | " Global netrw variable for toggle
-let g:netrw_banner = 0                                          | " Disable netrw banner
-let g:netrw_liststyle = 3                                       | " Tree style listing
-let g:netrw_browse_split = 4                                    | " Open file in previous window by default
-let g:netrw_winsize = 20                                        | " Set initial size of new windows to 20%
+let g:romes_netrw_enabled = 0                  | " Global netrw variable for toggle
+let g:netrw_banner = 0                         | " Disable netrw banner
+let g:netrw_liststyle = 3                      | " Tree style listing
+let g:netrw_browse_split = 4                   | " Open file in previous window by default
+let g:netrw_winsize = 20                       | " Set initial size of new windows to 20%
 let g:netrw_altv = 1
-let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'                  | " Hide dotfiles on load (use gh to show)
+let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+' | " Hide dotfiles on load (use gh to show)
 
 function! ToggleNetrw()
     if g:romes_netrw_enabled
@@ -123,7 +123,7 @@ augroup END
 
 " ======== Misc =================
 
-" cucumbertables.vim :: tpope script to create tables using Tabular
+" Cucumbertables.vim :: tpope function to create tables using Tabular
 function! s:align()
     let p = '^\s*|\s.*\s|\s*$'
     if exists(':Tabularize') && getline('.') =~# '^\s*|' && (getline(line('.')-1) =~# p || getline(line('.')+1) =~# p)
@@ -135,24 +135,18 @@ function! s:align()
     endif
 endfunction
 
-" :help ft-syntax-omni ||| alternative: only use completion with ale
-if has("autocmd") && exists("+omnifunc")
+" Set syntax completion function for filetypes without a completion function
 autocmd Filetype *
         \	if &omnifunc == "" |
-        \		setlocal omnifunc=syntaxcomplete#Complete |
+        \		setlocal omnifunc=syntaxcomplete#Complete | " :help ft-syntax-omni
         \	endif
-endif
-
-" TODO: (WIP)
-" " :<leader>s: echo sentence in a random lanuage from languages/sentences.db
-" noremap <silent> <leader>s :echom system("sentences -o -n")<CR>
-" function! GetRandomSentence() abort
-"   return system("sentences -...")
-" endfunction
 
 " Note:
 "   Some sensible options relevant for good language support are provided
 "   by vim-polyglot's 'sensible' component They can be disabled with
 "   let g:polyglot_disabled = ['sensible'], but should be set manually because
 "   they are relevant
+
+" " :<leader>s: echo sentence in a random lanuage from languages/sentences.db
+" noremap <silent> <leader>s :echom system("sentences -o -n")<CR>
 
