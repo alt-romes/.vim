@@ -32,39 +32,58 @@ colorscheme wal                           | " Select enabled theme (wal)
 highlight Comment cterm=italic            | " Highlight comments in italic
 
 " ======== Normal Mode ========= "
+"
+"   <C-l>
+"       clear the highlighting of :set hlsearch.
+"   <leader>cd
+"       change to a random dark colorscheme
+"   <leader>cl
+"       change to a random light colorscheme
+"   <leader>c
+"       write line to macOS clipboard
+"   <leader>a
+"       enable ALE (LSP client) and set omnifunc
+"   <leader>h
+"       show ALE reported error/warning detail/help
+"   <leader>k
+"       print information about the symbol at the cursor
+"       todo: somehow remap to K (as done with manpages)
+"   <leader>t
+"       Toggle netrw file browser in the directory of the file
+"   <leader>g
+"       Toggle Goyo
+"
 
-" :<C-l>: clear the highlighting of :set hlsearch.
 nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
-" :<leader>cd: change to a random dark colorscheme
 nnoremap <leader>cd :!wal -f random<cr><cr>
-" :<leader>cl: change to a random light colorscheme
 nnoremap <leader>cl :!wal -f random_light<cr><cr>
-" :<leader>c: write line to macOS clipboard
-noremap <silent> <leader>c :w !pbcopy<CR><CR>
-" :<leader>a: enable ALE (LSP client) and set omnifunc
+nnoremap <silent> <leader>c :w !pbcopy<CR><CR>
 nnoremap <silent> <leader>a :ALEEnable<CR>:set omnifunc=ale#completion#OmniFunc<CR>
-" :<leader>h: show ALE reported error/warning detail/help
 nnoremap <silent> <leader>h :ALEDetail<CR>
-" :<leader>k: print information about the symbol at the cursor
-" # TODO: somehow remap to :K: (as done with manpages)
 nnoremap <silent> <C-K> :ALEHover<CR><C-W>k
-" :<leader>t: Toggle netrw file browser in the directory of the file
 nnoremap <silent> <leader>t :call ToggleNetrw()<CR>
-" :<leader>g: Toggle Goyo
 nnoremap <leader>g :Goyo<cr>
 
 " ======== Insert Mode ========= "
+"
+"   <C-l>
+"       fix last spelling mistake
+"   |
+"       automatically align tables of form | .* | ... |
+"
 
-" :<C-l>: fix last spelling mistake
 inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
-" :|: automatically align tables of form | .* | ... |
 inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
 
 " ======== Visual Mode ========= "
+"
+"   J
+"       move visual selection up one line
+"   K
+"       move visual selection down one line
+"
 
-" :J: move visual selection up one line
 vnoremap J :m '>+1<cr>gv=gv
-" :K: move visual selection down one line
 vnoremap K :m '<-2<cr>gv=gv
 
 " ======== Plugins ============= "
@@ -137,9 +156,9 @@ endfunction
 
 " Set syntax completion function for filetypes without a completion function
 autocmd Filetype *
-        \	if &omnifunc == "" |
-        \		setlocal omnifunc=syntaxcomplete#Complete | " :help ft-syntax-omni
-        \	endif
+    \	if &omnifunc == "" |
+    \		setlocal omnifunc=syntaxcomplete#Complete | " :help ft-syntax-omni
+    \	endif
 
 " Note:
 "   Some sensible options relevant for good language support are provided
