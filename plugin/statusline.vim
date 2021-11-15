@@ -96,7 +96,7 @@ augroup StatusLine                                           | " Set simpler sta
 augroup END
 
 
-" Notes:
+" ======== Notes ================
 "   1 - %(...%) defines an item group;
 "   when all *items* in the group are empty,
 "   the whole group is empty

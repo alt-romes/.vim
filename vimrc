@@ -68,12 +68,9 @@ nnoremap <leader>g :Goyo<cr>
 "
 "   <C-l>
 "       fix last spelling mistake
-"   |
-"       automatically align tables of form | .* | ... |
 "
 
 inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
-inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
 
 " ======== Visual Mode ========= "
 "
@@ -140,19 +137,7 @@ augroup pandoc_syntax
     au! BufNewFile,BufFilePre,BufRead *.md,*.markdown set filetype=markdown.pandoc
 augroup END
 
-" ======== Misc =================
-
-" Cucumbertables.vim :: tpope function to create tables using Tabular
-function! s:align()
-    let p = '^\s*|\s.*\s|\s*$'
-    if exists(':Tabularize') && getline('.') =~# '^\s*|' && (getline(line('.')-1) =~# p || getline(line('.')+1) =~# p)
-        let column = strlen(substitute(getline('.')[0:col('.')],'[^|]','','g'))
-        let position = strlen(matchstr(getline('.')[0:col('.')],'.*|\s*\zs.*'))
-        Tabularize/|/l1
-        normal! 0
-        call search(repeat('[^|]*|',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
-    endif
-endfunction
+" ======== Other ================
 
 " Set syntax completion function for filetypes without a completion function
 autocmd Filetype *
@@ -160,12 +145,13 @@ autocmd Filetype *
     \		setlocal omnifunc=syntaxcomplete#Complete | " :help ft-syntax-omni
     \	endif
 
-" Note:
+" ======== Notes ================
 "   Some sensible options relevant for good language support are provided
 "   by vim-polyglot's 'sensible' component They can be disabled with
 "   let g:polyglot_disabled = ['sensible'], but should be set manually because
 "   they are relevant
 
-" " :<leader>s: echo sentence in a random lanuage from languages/sentences.db
-" noremap <silent> <leader>s :echom system("sentences -o -n")<CR>
+"   <leader>s
+"       " echo sentence in a random lanuage from languages/sentences.db
+"       noremap <silent> <leader>s :echom system("sentences -o -n")<CR>
 
