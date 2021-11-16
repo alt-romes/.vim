@@ -27,8 +27,7 @@ set nofoldenable                          | " Folds (e.g. set in a modeline to m
 
 let g:tex_flavor='latex'                  | " Set TeX flavor to LaTeX
 
-packadd! wal.vim                          | " Enable theme in pack/themes/opt
-colorscheme wal                           | " Select enabled theme (wal)
+colorscheme romes                         | " Select colorscheme
 
 highlight Comment cterm=italic            | " Highlight comments in italic
 
@@ -62,7 +61,7 @@ nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR
 nnoremap <silent> <leader>f :set fen!<CR>
 nnoremap <silent> <leader>cd :!wal -f random<cr><cr>
 nnoremap <silent> <leader>cl :!wal -f random_light<cr><cr>
-nnoremap <silent> <leader>c :w !pbcopy<CR><CR>
+noremap <silent> <leader>c :w !pbcopy<CR><CR>
 nnoremap <silent> <leader>a :ALEEnable<CR>:set omnifunc=ale#completion#OmniFunc<CR>
 nnoremap <silent> <leader>h :ALEDetail<CR>
 nnoremap <silent> <C-K> :ALEHover<CR><C-W>k

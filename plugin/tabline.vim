@@ -2,10 +2,6 @@
 
 set showtabline=1 | " Enable tabline when tabs > 1
 
-hi TabLineSel   ctermfg=black   ctermbg=yellow cterm=none
-hi TabLine      ctermfg=white   ctermbg=none   cterm=none
-hi TabLineFill  ctermfg=white   ctermbg=none   cterm=none
-
 let g:ja_number_map = ['一', '二', '三', '四', '五', '六', '七', '八', '九', '十']
 
 function MakeTabLabel(n)
