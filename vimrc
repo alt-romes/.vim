@@ -1,7 +1,7 @@
 " romes' vimrc
 " Author: romes
 
-" ======== Options ============= "
+" ======== Options ============= {{{
 
 set nocompatible                          | " Enter the current millennium
 
@@ -16,13 +16,14 @@ set mouse=a                               | " Enable all mouse modes
 set nowrap sidescroll=12 sidescrolloff=4  | " Disable line wrapping and set smoother horizontal scroll
 set autoread                              | " Automatically re-read files changed outside if not changed inside vim
 set autoindent                            | " Indent new lines according to previous line.
-set modeline modelines=5                  | " Check first and last file lines for modelines (that :set options)
+set modeline modelines=3                  | " Check first and last file lines for modelines (that :set options)
 set exrc secure                           | " Read current directory .vimrc (with security-related limitations)
 set spelllang=pt_pt,en_gb                 | " Spell languages to use when spell checking (:set spell)
 set regexpengine=0                        | " Automatically select regexp engine
 set undofile undodir=$HOME/.vim/undofiles | " Persistent undo (:h persistent-undo)
 set backspace=indent,eol,start            | " Make backspace work as expected
 set path+=**                              | " Recursively search subdirectories (when using gf, :tabfind, et cetera)
+set nofoldenable                          | " Folds (e.g. set in a modeline to marker) are open by default
 
 let g:tex_flavor='latex'                  | " Set TeX flavor to LaTeX
 
@@ -31,10 +32,13 @@ colorscheme wal                           | " Select enabled theme (wal)
 
 highlight Comment cterm=italic            | " Highlight comments in italic
 
-" ======== Normal Mode ========= "
+" }}}
+" ======== Normal Mode ========= {{{
 "
 "   <C-l>
 "       clear the highlighting of :set hlsearch.
+"   <leader>f
+"       toggle folds
 "   <leader>cd
 "       change to a random dark colorscheme
 "   <leader>cl
@@ -55,16 +59,18 @@ highlight Comment cterm=italic            | " Highlight comments in italic
 "
 
 nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
-nnoremap <leader>cd :!wal -f random<cr><cr>
-nnoremap <leader>cl :!wal -f random_light<cr><cr>
+nnoremap <silent> <leader>f :set fen!<CR>
+nnoremap <silent> <leader>cd :!wal -f random<cr><cr>
+nnoremap <silent> <leader>cl :!wal -f random_light<cr><cr>
 nnoremap <silent> <leader>c :w !pbcopy<CR><CR>
 nnoremap <silent> <leader>a :ALEEnable<CR>:set omnifunc=ale#completion#OmniFunc<CR>
 nnoremap <silent> <leader>h :ALEDetail<CR>
 nnoremap <silent> <C-K> :ALEHover<CR><C-W>k
 nnoremap <silent> <leader>t :call ToggleNetrw()<CR>
-nnoremap <leader>g :Goyo<cr>
+nnoremap <silent> <leader>g :Goyo<cr>
 
-" ======== Insert Mode ========= "
+" }}}
+" ======== Insert Mode ========= {{{
 "
 "   <C-l>
 "       fix last spelling mistake
@@ -72,7 +78,8 @@ nnoremap <leader>g :Goyo<cr>
 
 inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
 
-" ======== Visual Mode ========= "
+" }}}
+" ======== Visual Mode ========= {{{
 "
 "   J
 "       move visual selection up one line
@@ -83,9 +90,10 @@ inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
 vnoremap J :m '>+1<cr>gv=gv
 vnoremap K :m '<-2<cr>gv=gv
 
-" ======== Plugins ============= "
+" }}}
+" ======== Plugins ============= {{{
 
-" ======== Netrw =============== "
+" ======== Netrw =============== {{{
 
 let g:romes_netrw_enabled = 0                  | " Global netrw variable for toggle
 let g:netrw_banner = 0                         | " Disable netrw banner
@@ -105,7 +113,8 @@ function! ToggleNetrw()
     endif
 endfunction
 
-" ======== ALE ================= "
+" }}}
+" ======== ALE ================= {{{
 
 let g:ale_enabled = 0                                           | " Disable ALE by default
 
@@ -126,18 +135,23 @@ let g:ale_floating_preview = 1                                  | " [Testing] Us
 " let g:ale_completion_enabled = 1                              | " TODO: help ale-completion
 " let g:ale_completion_autoimport = 1                           | " Automatically import external modules for completion
 
-" ======== Polyglot ============
+" }}}
+" ======== Polyglot ============ {{{
 
 let g:polyglot_disabled = ['autoindent']                        | " Disable autoindent from vim-polyglot
 
-" ======== Pandoc Markdown =====
+" }}}
+" ======== Pandoc Markdown ===== {{{
 
 " Set filetype for pandoc markdown
 augroup pandoc_syntax
     au! BufNewFile,BufFilePre,BufRead *.md,*.markdown set filetype=markdown.pandoc
 augroup END
 
-" ======== Other ================
+" }}}
+
+" }}}
+" ======== Other ================ {{{
 
 " Set syntax completion function for filetypes without a completion function
 autocmd Filetype *
@@ -145,13 +159,22 @@ autocmd Filetype *
     \		setlocal omnifunc=syntaxcomplete#Complete | " :help ft-syntax-omni
     \	endif
 
-" ======== Notes ================
+" }}}
+" ======== Notes ================ {{{
 "   Some sensible options relevant for good language support are provided
 "   by vim-polyglot's 'sensible' component They can be disabled with
 "   let g:polyglot_disabled = ['sensible'], but should be set manually because
 "   they are relevant
-
+"
+"   Folds can be created automatically for delimited blocks (see :h fmr)
+"   The foldmethod and foldmarker needed to create them can be set in a modeline
+"       /* vim: foldmethod=marker fmr={,} */
+"   The <leader>f mapping can be used to toggle all folds
+"
 "   <leader>s
 "       " echo sentence in a random lanuage from languages/sentences.db
 "       noremap <silent> <leader>s :echom system("sentences -o -n")<CR>
+"
+" }}}}
 
+" vim: fdm=marker:
