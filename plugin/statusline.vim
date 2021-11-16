@@ -1,7 +1,9 @@
 " Author: romes
 
+
+
 let g:statusline_more_colors = 1                             | " Highlight groups with more colors
-let g:statusline_highlight   = 1                             | " Statusline highlighting mode (available: 1, 2)
+let g:statusline_highlight   = 1 + localtime() % 2           | " Statusline highlighting mode (available: 1, 2)
 
 set laststatus=2                                             | " Always enable statusline
 set noshowmode                                               | " Don't display -- MODE --
