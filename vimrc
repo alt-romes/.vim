@@ -16,14 +16,14 @@ set mouse=a                               | " Enable all mouse modes
 set nowrap sidescroll=12 sidescrolloff=4  | " Disable line wrapping and set smoother horizontal scroll
 set autoread                              | " Automatically re-read files changed outside if not changed inside vim
 set autoindent                            | " Indent new lines according to previous line.
-set modeline modelines=3                  | " Check first and last file lines for modelines (that :set options)
+set modeline modelines=4                  | " Check first and last file lines for modelines (that :set options)
 set exrc secure                           | " Read current directory .vimrc (with security-related limitations)
 set spelllang=pt_pt,en_gb                 | " Spell languages to use when spell checking (:set spell)
-set regexpengine=0                        | " Automatically select regexp engine
+set regexpengine=0                        | " Automatically select regexp engine{{{
 set undofile undodir=$HOME/.vim/undofiles | " Persistent undo (:h persistent-undo)
 set backspace=indent,eol,start            | " Make backspace work as expected
-set path+=**                              | " Recursively search subdirectories (when using gf, :tabfind, et cetera)
-set nofoldenable                          | " Folds (e.g. set in a modeline to marker) are open by default
+set path+=**                              | " Recursively search subdirectories (when using gf, :tabfind, et cetera)}}}
+set nofoldenable foldmethod=marker        | " Fold with markers (e.g. set in a modeline to marker), open by default
 
 let g:tex_flavor='latex'                  | " Set TeX flavor to LaTeX
 
@@ -45,7 +45,7 @@ highlight Comment cterm=italic            | " Highlight comments in italic
 "   <leader>c
 "       write line to macOS clipboard
 "   <leader>a
-"       enable ALE (LSP client) and set omnifunc
+"       enable ALE (LSP client) and set omnifunc " :set omnifunc=ale#completion#OmniFunc<CR>
 "   <leader>h
 "       show ALE reported error/warning detail/help
 "   <leader>k
@@ -62,7 +62,7 @@ nnoremap <silent> <leader>f :set fen!<CR>
 nnoremap <silent> <leader>cd :!wal -f random<cr><cr>
 nnoremap <silent> <leader>cl :!wal -f random_light<cr><cr>
 noremap <silent> <leader>c :w !pbcopy<CR><CR>
-nnoremap <silent> <leader>a :ALEEnable<CR>:set omnifunc=ale#completion#OmniFunc<CR>
+nnoremap <silent> <leader>a :ALEEnable<CR>
 nnoremap <silent> <leader>h :ALEDetail<CR>
 nnoremap <silent> <C-K> :ALEHover<CR><C-W>k
 nnoremap <silent> <leader>t :call ToggleNetrw()<CR>
@@ -97,9 +97,9 @@ vnoremap K :m '<-2<cr>gv=gv
 let g:romes_netrw_enabled = 0                  | " Global netrw variable for toggle
 let g:netrw_banner = 0                         | " Disable netrw banner
 let g:netrw_liststyle = 3                      | " Tree style listing
-let g:netrw_browse_split = 4                   | " Open file in previous window by default
-let g:netrw_winsize = 20                       | " Set initial size of new windows to 20%
 let g:netrw_altv = 1
+" let g:netrw_browse_split = 4                   | " Open file in previous window by default
+let g:netrw_winsize = 20                       | " Set initial size of new windows to 20%
 let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+' | " Hide dotfiles on load (use gh to show)
 
 function! ToggleNetrw()
@@ -129,7 +129,7 @@ let g:ale_echo_msg_format = '[%severity%%:code%] %s : %linter%' | " Message form
 
 let g:ale_lsp_suggestions = 1                                   | " Show hints/suggestions in addition to warnings and errors
 
-let g:ale_floating_preview = 1                                  | " [Testing] Use floating window preview
+let g:ale_floating_preview = 1                                  | " Use floating window preview
 
 " let g:ale_completion_enabled = 1                              | " TODO: help ale-completion
 " let g:ale_completion_autoimport = 1                           | " Automatically import external modules for completion
@@ -176,4 +176,4 @@ autocmd Filetype *
 "
 " }}}}
 
-" vim: fdm=marker:
+" vim: fdm=marker

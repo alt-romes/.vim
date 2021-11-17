@@ -5,14 +5,7 @@ function! Shizukesa()
 
     if g:shizukesa_enabled
 
-        wincmd h
-        close
-        wincmd l
-        close
-        wincmd k
-        close
-        wincmd j
-        close
+        silent only
 
         set nu rnu
         set laststatus=2
