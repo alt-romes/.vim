@@ -13,23 +13,17 @@ function! Shizukesa()
         let g:shizukesa_enabled = 0
     else
 
-        set nonu nornu              | " Remove numbers and relative numbers
-        set laststatus=0            | " Disable statusline
+        set nonu nornu   | " Remove numbers and relative numbers
+        set laststatus=0 | " Disable statusline
 
         silent only
-
-        let totalww = winwidth('%')
 
         " Vertical windows {{{
         vsplit
         vsplit
 
         enew
-        if totalww % 3 == 1         | " If the total window width is uneven,
-            vert res -1             | " the leftmost split will be 1 column
-        endif                       | " larger than the rightmost one
         2wincmd l
-
         enew
         wincmd h
 
@@ -43,7 +37,21 @@ function! Shizukesa()
             execute "vertical resize " .. -needs_width_per_side
             wincmd h
         endif
-        " }}}
+
+        " Sometimes the two sideway paddings won't have the same width,
+        " And the leftmost split will be 1 column larger. In this case,
+        " Resize the leftmost split by -1
+        wincmd l
+        let rightw = winwidth('%')
+        2wincmd h
+        let leftw = winwidth('%')
+        wincmd l
+        if leftw == rightw + 1
+            wincmd h
+            vertical resize -1
+            wincmd l
+        endif
+        "}}}
 
         " Horizontal windows {{{
         split
