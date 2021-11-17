@@ -1,5 +1,5 @@
 let g:shizukesa_enabled=0
-let s:shizukesa_winwidth=100
+let g:shizukesa_min_winwidth=100
 
 function! Shizukesa()
 
@@ -18,14 +18,20 @@ function! Shizukesa()
 
         silent only
 
+        let totalww = winwidth('%')
+
         " Vertical windows {{{
         vsplit
         vsplit
 
         enew
+        setlocal winwidth=5
         2wincmd l
         enew
+        setlocal winwidth=5
         wincmd h
+
+        let s:shizukesa_winwidth=max([g:shizukesa_min_winwidth, totalww*5/7]) " Use 5/7 of screen if satisfies min_winwidth
 
         let ww = winwidth('%')
         let needs_width_per_side = (s:shizukesa_winwidth - ww) / 2
