@@ -54,7 +54,7 @@ highlight Comment cterm=italic            | " Highlight comments in italic
 "   <leader>t
 "       Toggle netrw file browser in the directory of the file
 "   <leader>g
-"       Toggle Goyo
+"       Toggle Shizukesa
 "
 
 nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
@@ -66,7 +66,7 @@ nnoremap <silent> <leader>a :ALEEnable<CR>:set omnifunc=ale#completion#OmniFunc<
 nnoremap <silent> <leader>h :ALEDetail<CR>
 nnoremap <silent> <C-K> :ALEHover<CR><C-W>k
 nnoremap <silent> <leader>t :call ToggleNetrw()<CR>
-nnoremap <silent> <leader>g :Goyo<cr>
+nnoremap <silent> <leader>g :call Shizukesa()<cr>
 
 " }}}
 " ======== Insert Mode ========= {{{

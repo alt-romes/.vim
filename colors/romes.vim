@@ -16,6 +16,7 @@ packadd! wal.vim                                             | " Add optional wa
 runtime colors/wal.vim                                       | " Load colorscheme (wal)
 
 
+
 hi TabLineSel   ctermfg=black   ctermbg=yellow cterm=none
 hi TabLine      ctermfg=white   ctermbg=none   cterm=none
 hi TabLineFill  ctermfg=white   ctermbg=none   cterm=none
@@ -39,3 +40,5 @@ elseif g:statusline_highlight == 2
     hi User5 ctermfg=cyan ctermbg=none cterm=italic,bold     | " Cyan foreground
 
 endif
+
+hi VertSplit cterm=none ctermbg=none ctermfg=darkgrey
