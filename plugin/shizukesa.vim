@@ -10,6 +10,9 @@ function! Shizukesa()
         set nu rnu
         set laststatus=2
 
+        " Reenable window commands
+        unmap <silent> <C-w>
+
         let g:shizukesa_enabled = 0
     else
 
@@ -71,6 +74,9 @@ function! Shizukesa()
         resize 4
         wincmd k
         " }}}
+
+        " Disable window commands
+        noremap <silent> <C-w> :<CR>
 
         highlight! VertSplit cterm=none ctermbg=none ctermfg=black
 
