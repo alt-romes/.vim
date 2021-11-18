@@ -140,14 +140,6 @@ let g:ale_floating_preview = 1                                  | " Use floating
 let g:polyglot_disabled = ['autoindent']                        | " Disable autoindent from vim-polyglot
 
 " }}}
-" ======== Pandoc Markdown ===== {{{
-
-" Set filetype for pandoc markdown
-augroup pandoc_syntax
-    au! BufNewFile,BufFilePre,BufRead *.md,*.markdown set filetype=markdown.pandoc
-augroup END
-
-" }}}
 
 " }}}
 " ======== Other ================ {{{

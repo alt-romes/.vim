@@ -1,6 +1,18 @@
+# Included plugins
+
+| Plugin name    | Repository                              | Description                     |
+| ---            | ---                                     | ---                             |
+| ALE            | https://github.com/dense-analysis/ale   | LSP integration                 |
+| Tabular        | https://github.com/godlygeek/tabular    | Table creation                  |
+| vim-commentary | https://github.com/tpope/vim-commentary | Minimalist commenting plugin    |
+| vim-surround   | https://github.com/tpope/vim-surround   | Mappings for "surrounding"      |
+| vim-polyglot   | https://github.com/sheerun/vim-polyglot | Language pack                   |
+| wal.vim        | https://github.com/dylanaraps/wal.vim   | Colorscheme (being replaced...) |
+
+---
+
 Tabularize example...
 
-Statusline definition with comments
 ```vim
 set statusline=%1*\ %{mode_map[mode()]}\    " Mode
 set statusline+=%0*%(\ %r%)                    " Read-only flag
