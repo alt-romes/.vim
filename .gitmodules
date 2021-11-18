@@ -1,0 +1,18 @@
+[submodule "pack/romes/start/ale"]
+	path = pack/romes/start/ale
+	url = https://github.com/dense-analysis/ale
+[submodule "pack/romes/start/vim-polyglot"]
+	path = pack/romes/start/vim-polyglot
+	url = https://github.com/sheerun/vim-polyglot
+[submodule "pack/romes/start/vim-commentary"]
+	path = pack/romes/start/vim-commentary
+	url = https://github.com/tpope/vim-commentary
+[submodule "pack/themes/opt/wal.vim"]
+	path = pack/themes/opt/wal.vim
+	url = https://github.com/dylanaraps/wal.vim
+[submodule "pack/romes/start/tabular"]
+	path = pack/romes/start/tabular
+	url = https://github.com/godlygeek/tabular
+[submodule "pack/romes/start/vim-surround"]
+	path = pack/romes/start/vim-surround
+	url = https://github.com/tpope/vim-surround
