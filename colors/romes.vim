@@ -97,7 +97,8 @@ hi ALEError ctermbg=NONE ctermfg=1
 hi ALEWarning ctermbg=NONE ctermfg=3
 
 
-hi TabLineSel   ctermfg=black   ctermbg=yellow cterm=none
+" hi TabLineSel   ctermfg=black   ctermbg=yellow cterm=none
+hi link TabLineSel User2
 hi TabLine      ctermfg=white   ctermbg=none   cterm=none
 hi TabLineFill  ctermfg=white   ctermbg=none   cterm=none
 
