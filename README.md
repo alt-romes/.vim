@@ -7,7 +7,6 @@
 | vim-commentary | https://github.com/tpope/vim-commentary | Minimalist commenting plugin    |
 | vim-surround   | https://github.com/tpope/vim-surround   | Mappings for "surrounding"      |
 | vim-polyglot   | https://github.com/sheerun/vim-polyglot | Language pack                   |
-| wal.vim        | https://github.com/dylanaraps/wal.vim   | Colorscheme (being replaced...) |
 
 ---
 

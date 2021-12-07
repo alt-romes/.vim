@@ -7,9 +7,6 @@
 [submodule "pack/romes/start/vim-commentary"]
 	path = pack/romes/start/vim-commentary
 	url = https://github.com/tpope/vim-commentary
-[submodule "pack/themes/opt/wal.vim"]
-	path = pack/themes/opt/wal.vim
-	url = https://github.com/dylanaraps/wal.vim
 [submodule "pack/romes/start/tabular"]
 	path = pack/romes/start/tabular
 	url = https://github.com/godlygeek/tabular
