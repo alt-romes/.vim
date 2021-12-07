@@ -11,6 +11,15 @@
 
 ---
 
+| Action              | Keys                  |
+| ------------------- | --------------------- |
+| Enable ALE          | <kbd><leader>a</kbd>  |
+| Toggle File Browser | <kbd><leader>t</kbd>  |
+| Comment             | <kbd>gc<motion></kbd> |
+| Comment Line        | <kbd>gcc</kbd>        |
+
+---
+
 Tabularize example...
 
 ```vim

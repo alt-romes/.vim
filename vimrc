@@ -57,16 +57,17 @@ highlight Comment cterm=italic            | " Highlight comments in italic
 "       Toggle Shizukesa
 "
 
-nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
-nnoremap <silent> <leader>f :set fen!<CR>
+nnoremap <silent> <C-l> :nohlsearch<C-r>=has('diff')?'<Bar>diffupdate':''<cr><cr><C-l>
+nnoremap <silent> <leader>f :set fen!<cr>
 nnoremap <silent> <leader>cd :!wal -f random<cr><cr>
 nnoremap <silent> <leader>cl :!wal -f random_light<cr><cr>
-noremap <silent> <leader>c :w !pbcopy<CR><CR>
-nnoremap <silent> <leader>a :ALEEnable<CR>
-nnoremap <silent> <leader>h :ALEDetail<CR>
-nnoremap <silent> <C-K> :ALEHover<CR><C-W>k
-nnoremap <silent> <leader>t :call ToggleNetrw()<CR>
+noremap  <silent> <leader>c :w !pbcopy<cr><cr>
+nnoremap <silent> <leader>a :ALEEnable<cr>
+nnoremap <silent> <leader>h :ALEDetail<cr>
+nnoremap <silent> <C-k> :ALEHover<cr><C-w>k
+nnoremap <silent> <leader>t :call ToggleNetrw()<cr>
 nnoremap <silent> <leader>g :call Shizukesa()<cr>
+nnoremap <silent> <leader>er :vsplit ~/.vim/README.md<cr>
 
 " }}}
 " ======== Insert Mode ========= {{{
@@ -142,7 +143,7 @@ let g:polyglot_disabled = ['autoindent']                        | " Disable auto
 " }}}
 
 " }}}
-" ======== Other ================ {{{
+" ======== Other =============== {{{
 
 " Set syntax completion function for filetypes without a completion function
 autocmd Filetype *
@@ -151,7 +152,7 @@ autocmd Filetype *
     \	endif
 
 " }}}
-" ======== Notes ================ {{{
+" ======== Notes =============== {{{
 "   Some sensible options relevant for good language support are provided
 "   by vim-polyglot's 'sensible' component They can be disabled with
 "   let g:polyglot_disabled = ['sensible'], but should be set manually because
