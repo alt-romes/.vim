@@ -19,6 +19,14 @@
 
 ---
 
+| Netrw Action               | Keys             |
+| -------------------------- | ---------------- |
+| Open in Current Window     | <kbd>enter</kbd> |
+| Open in New Tab            | <kbd>t</kbd>     |
+| Open in New Vertical Split | <kbd>v</kbd>     |
+
+---
+
 Tabularize example...
 
 ```vim
