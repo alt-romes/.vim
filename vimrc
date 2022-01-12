@@ -19,10 +19,10 @@ set autoindent                            | " Indent new lines according to prev
 set modeline modelines=4                  | " Check first and last file lines for modelines (that :set options)
 set exrc secure                           | " Read current directory .vimrc (with security-related limitations)
 set spelllang=pt_pt,en_gb                 | " Spell languages to use when spell checking (:set spell)
-set regexpengine=0                        | " Automatically select regexp engine{{{
+set regexpengine=0                        | " Automatically select regexp engine
 set undofile undodir=$HOME/.vim/undofiles | " Persistent undo (:h persistent-undo)
 set backspace=indent,eol,start            | " Make backspace work as expected
-set path+=**                              | " Recursively search subdirectories (when using gf, :tabfind, et cetera)}}}
+set path+=**                              | " Recursively search subdirectories (when using gf, :tabfind, et cetera)
 set nofoldenable foldmethod=marker        | " Fold with markers (e.g. set in a modeline to marker), open by default
 
 let g:tex_flavor='latex'                  | " Set TeX flavor to LaTeX
@@ -59,6 +59,8 @@ highlight Comment cterm=italic            | " Highlight comments in italic
 
 nnoremap <silent> <C-l> :nohlsearch<C-r>=has('diff')?'<Bar>diffupdate':''<cr><cr><C-l>
 nnoremap <silent> <leader>f :set fen!<cr>
+nnoremap <silent> <leader>cb :!wal -i ~/Pictures/backgrounds --saturate 0.8<cr><cr>
+nnoremap <silent> <leader>cw :!wal -l -i ~/Pictures/backgrounds --saturate 0.8<cr><cr>
 nnoremap <silent> <leader>cd :!wal -f random<cr><cr>
 nnoremap <silent> <leader>cl :!wal -f random_light<cr><cr>
 noremap  <silent> <leader>c :w !pbcopy<cr><cr>

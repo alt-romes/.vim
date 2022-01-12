@@ -1,12 +1,13 @@
 # Included plugins
 
-| Plugin name    | Repository                              | Description                     |
-| ---            | ---                                     | ---                             |
-| ALE            | https://github.com/dense-analysis/ale   | LSP integration                 |
-| Tabular        | https://github.com/godlygeek/tabular    | Table creation                  |
-| vim-commentary | https://github.com/tpope/vim-commentary | Minimalist commenting plugin    |
-| vim-surround   | https://github.com/tpope/vim-surround   | Mappings for "surrounding"      |
-| vim-polyglot   | https://github.com/sheerun/vim-polyglot | Language pack                   |
+| Plugin name           | Repository                              | Description                  |
+| ---                   | ---                                     | ---                          |
+| ALE                   | https://github.com/dense-analysis/ale   | LSP integration              |
+| Tabular               | https://github.com/godlygeek/tabular    | Table creation               |
+| vim-commentary        | https://github.com/tpope/vim-commentary | Minimalist commenting plugin |
+| vim-surround          | https://github.com/tpope/vim-surround   | Mappings for "surrounding"   |
+| vim-polyglot          | https://github.com/sheerun/vim-polyglot | Language pack                |
+| emmet-vim (to be opt) | https://github.com/mattn/emmet-vim      | HTML and CSS                 |
 
 ---
 
