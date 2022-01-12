@@ -17,6 +17,9 @@
 | Toggle File Browser | <kbd><leader>t</kbd>  |
 | Comment             | <kbd>gc<motion></kbd> |
 | Comment Line        | <kbd>gcc</kbd>        |
+| Toggle all folds    | <kbd><leader>f</kbd>  |
+| Create Fold         | <kbd>zf</kbd>         |
+| Toggle fold         | <kbd>za</kbd>         |
 
 ---
 

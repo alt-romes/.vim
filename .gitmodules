@@ -15,4 +15,4 @@
 	url = https://github.com/tpope/vim-surround
 [submodule "pack/romes/start/emmet-vim"]
 	path = pack/romes/start/emmet-vim
-	url = git@github.com:mattn/emmet-vim.git
+	url = https://github.com/mattn/emmet-vim.git
