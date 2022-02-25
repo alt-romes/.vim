@@ -27,7 +27,10 @@ set nofoldenable foldmethod=marker        | " Fold with markers (e.g. set in a m
 
 let g:tex_flavor='latex'                  | " Set TeX flavor to LaTeX
 
-colorscheme romes                         | " Select colorscheme
+" colorscheme romes                         | " Select colorscheme
+let g:statusline_more_colors=0            | " Use more colors in the custom statusline
+packadd! everforest
+colorscheme everforest
 
 highlight Comment cterm=italic            | " Highlight comments in italic
 

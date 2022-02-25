@@ -16,3 +16,6 @@
 [submodule "pack/romes/start/emmet-vim"]
 	path = pack/romes/start/emmet-vim
 	url = https://github.com/mattn/emmet-vim.git
+[submodule "pack/themes/opt/everforest"]
+	path = pack/themes/opt/everforest
+	url = https://github.com/sainnhe/everforest

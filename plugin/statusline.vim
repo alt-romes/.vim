@@ -66,12 +66,18 @@ set statusline+=\ %p%%\                                      | " Percentage
 
 set statusline+=%3*\ %3l:%-2c\                               | " Line:Column
 
-
 augroup StatusLine                                           | " Set simpler statusline for help,netrw,... buffers
     autocmd!
     autocmd FileType help,netrw setlocal statusline=%2*%(\ %{&filetype}\ %)
 augroup END
 
+if g:colors_name == "everforest"                             | " Highlight statusline when using everforest colorscheme
+    hi link User1 Red
+    hi link User2 Yellow
+    hi link User3 Blue
+    hi link User4 Purple
+    hi link User5 Aqua
+endif
 
 " ======== Notes ================
 "   1 - %(...%) defines an item group;
