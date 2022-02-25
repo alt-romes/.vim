@@ -37,7 +37,7 @@ endfunction
 
 set statusline=%1*\ %{mode_map[mode()]}\                     | " Mode
 
-if g:statusline_more_colors
+if exists('g:statusline_more_colors') && g:statusline_more_colors
     set statusline+=%4*
 else
     set statusline+=%0*
@@ -55,7 +55,7 @@ set statusline+=%0*%=                                        | " Switch to right
 
 set statusline+=%2*%(\ %{&filetype}\ %)                      | " Filetype
 
-if g:statusline_more_colors
+if exists('g:statusline_more_colors') && g:statusline_more_colors
     set statusline+=%5*
 else
     set statusline+=%0*

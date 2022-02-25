@@ -66,9 +66,11 @@ nnoremap <silent> <leader>cl :!wal -f random_light<cr><cr>
 noremap  <silent> <leader>c :w !pbcopy<cr><cr>
 nnoremap <silent> <leader>a :ALEEnable<cr>
 nnoremap <silent> <leader>h :ALEDetail<cr>
+nnoremap <silent> <leader>ca :ALECodeAction<cr>
 nnoremap <silent> <C-k> :ALEHover<cr><C-w>k
 nnoremap <silent> <leader>t :call ToggleNetrw()<cr>
 nnoremap <silent> <leader>g :call Shizukesa()<cr>
+nnoremap <silent> <leader>m :make<cr><cr><cr>
 nnoremap <silent> <leader>er :vsplit ~/.vim/README.md<cr>
 
 " }}}
