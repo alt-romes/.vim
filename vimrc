@@ -27,10 +27,10 @@ set nofoldenable foldmethod=marker        | " Fold with markers (e.g. set in a m
 
 let g:tex_flavor='latex'                  | " Set TeX flavor to LaTeX
 
-" colorscheme romes                         | " Select colorscheme
 let g:statusline_more_colors=0            | " Use more colors in the custom statusline
-packadd! everforest
-colorscheme everforest
+colorscheme romes                         | " Select colorscheme
+" packadd! everforest
+" colorscheme everforest
 
 highlight Comment cterm=italic            | " Highlight comments in italic
 
@@ -147,6 +147,11 @@ let g:ale_floating_preview = 1                                  | " Use floating
 
 let g:polyglot_disabled = ['autoindent']                        | " Disable autoindent from vim-polyglot
 
+" }}}
+" ======== Latex Unicoder ====== {{{
+let g:unicoder_no_map = 1
+nnoremap <C-i> :call unicoder#start(0)<CR>
+vnoremap <C-i> :<C-u>call unicoder#selection()<CR>
 " }}}
 
 " }}}

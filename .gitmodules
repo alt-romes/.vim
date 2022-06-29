@@ -19,3 +19,9 @@
 [submodule "pack/themes/opt/everforest"]
 	path = pack/themes/opt/everforest
 	url = https://github.com/sainnhe/everforest
+[submodule "pack/romes/start/vim-css-color"]
+	path = pack/romes/start/vim-css-color
+	url = https://github.com/ap/vim-css-color
+[submodule "pack/romes/start/latex-unicoder.vim"]
+	path = pack/romes/start/latex-unicoder.vim
+	url = https://github.com/joom/latex-unicoder.vim.git
