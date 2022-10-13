@@ -74,6 +74,8 @@ nnoremap <silent> <C-k> :ALEHover<cr><C-w>k
 nnoremap <silent> <leader>t :call ToggleNetrw()<cr>
 nnoremap <silent> <leader>g :call Shizukesa()<cr>
 nnoremap <silent> <leader>m :make<cr><cr><cr>
+nnoremap <silent> <leader>cp :cp<cr>
+nnoremap <silent> <leader>cn :cn<cr>
 nnoremap <silent> <leader>er :vsplit ~/.vim/README.md<cr>
 
 " }}}
@@ -150,7 +152,7 @@ let g:polyglot_disabled = ['autoindent']                        | " Disable auto
 " }}}
 " ======== Latex Unicoder ====== {{{
 let g:unicoder_no_map = 1
-nnoremap <C-i> :call unicoder#start(0)<CR>
+nnoremap <leader>i :call unicoder#start(0)<CR>
 vnoremap <C-i> :<C-u>call unicoder#selection()<CR>
 " }}}
 
