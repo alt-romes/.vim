@@ -25,3 +25,6 @@
 [submodule "pack/romes/start/latex-unicoder.vim"]
 	path = pack/romes/start/latex-unicoder.vim
 	url = https://github.com/joom/latex-unicoder.vim.git
+[submodule "pack/themes/opt/catppuccin"]
+	path = pack/themes/opt/catppuccin
+	url = https://github.com/catppuccin/vim.git

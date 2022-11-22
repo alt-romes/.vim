@@ -24,13 +24,17 @@ set undofile undodir=$HOME/.vim/undofiles | " Persistent undo (:h persistent-und
 set backspace=indent,eol,start            | " Make backspace work as expected
 set path+=**                              | " Recursively search subdirectories (when using gf, :tabfind, et cetera)
 set nofoldenable foldmethod=marker        | " Fold with markers (e.g. set in a modeline to marker), open by default
+set termguicolors                         | " When compiled with +termguicolors enables better colors
 
 let g:tex_flavor='latex'                  | " Set TeX flavor to LaTeX
 
-let g:statusline_more_colors=0            | " Use more colors in the custom statusline
-colorscheme romes                         | " Select colorscheme
-" packadd! everforest
-" colorscheme everforest
+" let g:statusline_more_colors=0            | " Use more colors in the custom statusline
+" colorscheme romes                         | " Select colorscheme
+packadd! everforest
+colorscheme everforest
+" packadd! catppuccin
+" colorscheme catppuccin_latte
+" colorscheme catppuccin_mocha
 
 highlight Comment cterm=italic            | " Highlight comments in italic
 
