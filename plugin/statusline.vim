@@ -68,15 +68,37 @@ set statusline+=%3*\ %3l:%-2c\                               | " Line:Column
 
 augroup StatusLine                                           | " Set simpler statusline for help,netrw,... buffers
     autocmd!
+
+    " Special statusline for help,netrw
     autocmd FileType help,netrw setlocal statusline=%2*%(\ %{&filetype}\ %)
+
+    " When the colorscheme is changed, reload statusline
+    autocmd ColorScheme * runtime plugin/statusline.vim
 augroup END
 
-if g:colors_name == "everforest"                             | " Highlight statusline when using everforest colorscheme
-    hi link User1 Red
-    hi link User2 Yellow
-    hi link User3 Blue
-    hi link User4 Purple
-    hi link User5 Aqua
+func ReverseHiGroup(groupSrc, groupDst)
+    let id = synIDtrans(hlID(a:groupSrc))
+    for mode in ['cterm', 'gui']
+        for g in ['fg', 'bg']
+            exe 'let '. mode.g. "=  synIDattr(id, '". g."#', '". mode. "')"
+            exe "let ". mode.g. " = empty(". mode.g. ") ? 'NONE' : ". mode.g
+        endfor
+    endfor
+    exe printf('hi! %s ctermfg=%s ctermbg=%s guifg=%s guibg=%s', a:groupDst, ctermbg, ctermfg, guibg, guifg)
+endfunc
+
+" Set the User highlight to the reverse of normal
+" call ReverseHiGroup("Type", "User1")
+" call ReverseHiGroup("StatusLine", "User2")
+" call ReverseHiGroup("StatusLine", "User3")
+
+if g:colors_name != "romes"                                  | " Highlight statusline when using a normal colorscheme
+
+    hi link User1 Visual
+    hi link User2 User1
+    hi link User3 User1
+    hi link User4 Normal
+    hi link User5 User4
 endif
 
 " ======== Notes ================

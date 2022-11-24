@@ -28,3 +28,9 @@
 [submodule "pack/themes/opt/catppuccin"]
 	path = pack/themes/opt/catppuccin
 	url = https://github.com/catppuccin/vim.git
+[submodule "pack/themes/opt/vim-colors-xcode"]
+	path = pack/themes/opt/vim-colors-xcode
+	url = https://github.com/arzg/vim-colors-xcode
+[submodule "pack/themes/opt/momiji"]
+	path = pack/themes/opt/momiji
+	url = https://github.com/kyoh86/momiji
