@@ -34,9 +34,9 @@ let g:statusline_more_colors=1            | " Use more colors in the custom stat
 packadd! everforest
 " colorscheme everforest
 " colorscheme catppuccin_latte
-" colorscheme catppuccin_mocha
+colorscheme catppuccin_mocha
 " colorscheme xcodedark
-colorscheme momiji
+" colorscheme momiji
 
 highlight Comment cterm=italic            | " Highlight comments in italic
 
@@ -160,6 +160,25 @@ let g:polyglot_disabled = ['autoindent']                        | " Disable auto
 let g:unicoder_no_map = 1
 nnoremap <leader>i :call unicoder#start(0)<CR>
 vnoremap <C-i> :<C-u>call unicoder#selection()<CR>
+" }}}
+" ======== Unicode.vim ========= {{{
+" Cheatsheet
+" :UnicodeTable or :UnicodeSearch to find existing symbols
+"
+" Digraphs are actually a native feature: Press <Ctrl+k> and a combination of
+" two letters to insert a digraph
+"
+" Otherwise, use <Ctrl+x+g> to autocomplete a symbol from two letters
+"
+" FA : ∀
+" TE : ∃
+" a* : α
+"
+" For unicode symbols not associated with a digraph, we can insert them by
+" name and with the unicode autocomplete command <Ctrl+x+z>
+"
+" elem : ∈
+"
 " }}}
 
 " }}}

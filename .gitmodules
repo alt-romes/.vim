@@ -34,3 +34,6 @@
 [submodule "pack/themes/opt/momiji"]
 	path = pack/themes/opt/momiji
 	url = https://github.com/kyoh86/momiji
+[submodule "pack/romes/start/unicode.vim"]
+	path = pack/romes/start/unicode.vim
+	url = https://github.com/chrisbra/unicode.vim
