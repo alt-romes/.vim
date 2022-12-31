@@ -1,7 +1,8 @@
-" disable ghc integration
-let b:ale_linters = ['cabal_ghc', 'ghc_mod', 'hdevtools', 'hie', 'hlint', 'hls', 'stack_build', 'stack_ghc']
+let b:ale_linters = ['hls']
 
 set expandtab tabstop=2 shiftwidth=2      | " Indent by 2 spaces
+
+let g:ale_haskell_hls_config = {'haskell': {'formattingProvider': 'fourmolu'}}
 
 " call ale#linter#Define('haskell', {
 " \   'name': 'ghc-dev',

@@ -34,8 +34,8 @@ let g:statusline_more_colors=1            | " Use more colors in the custom stat
 packadd! everforest
 " colorscheme everforest
 " colorscheme catppuccin_latte
-colorscheme catppuccin_mocha
-" colorscheme xcodedark
+" colorscheme catppuccin_mocha
+colorscheme xcodedark
 " colorscheme momiji
 
 highlight Comment cterm=italic            | " Highlight comments in italic
