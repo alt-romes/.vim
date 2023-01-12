@@ -1,3 +1,10 @@
+# Getting started
+
+```
+cd $HOME
+git clone --recurse-submodules https://github.com/alt-romes/.vim
+```
+
 # Included plugins
 
 | Plugin name           | Repository                              | Description                  |

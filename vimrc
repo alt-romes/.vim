@@ -30,15 +30,15 @@ let g:tex_flavor='latex'                  | " Set TeX flavor to LaTeX
 
 let g:statusline_more_colors=1            | " Use more colors in the custom statusline
 " colorscheme romes                         | " Select colorscheme
-
-packadd! everforest
-" colorscheme everforest
-" colorscheme catppuccin_latte
-" colorscheme catppuccin_mocha
-colorscheme xcodedark
-" colorscheme momiji
-
 highlight Comment cterm=italic            | " Highlight comments in italic
+
+" Colorschemes
+packadd! everforest
+colorscheme everforest
+" colorscheme xcodedark
+" let g:two_firewatch_italics=1
+" colorscheme two-firewatch
+
 
 " }}}
 " ======== Normal Mode ========= {{{
