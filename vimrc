@@ -25,19 +25,21 @@ set backspace=indent,eol,start            | " Make backspace work as expected
 set path+=**                              | " Recursively search subdirectories (when using gf, :tabfind, et cetera)
 set nofoldenable foldmethod=marker        | " Fold with markers (e.g. set in a modeline to marker), open by default
 set termguicolors                         | " When compiled with +termguicolors enables better colors
+set clipboard^=unnamed                    | " Share clipboard between vim and system
 
 let g:tex_flavor='latex'                  | " Set TeX flavor to LaTeX
 
 let g:statusline_more_colors=1            | " Use more colors in the custom statusline
-" colorscheme romes                         | " Select colorscheme
+colorscheme romes                         | " Select colorscheme
 highlight Comment cterm=italic            | " Highlight comments in italic
 
 " Colorschemes
 packadd! everforest
-colorscheme everforest
-" colorscheme xcodedark
-" let g:two_firewatch_italics=1
-" colorscheme two-firewatch
+" colorscheme everforest
+" colorscheme xcodedarkhc
+" colorscheme xcodelighthc
+let g:two_firewatch_italics=1
+colorscheme two-firewatch
 
 
 " }}}
@@ -51,8 +53,6 @@ colorscheme everforest
 "       change to a random dark colorscheme
 "   <leader>cl
 "       change to a random light colorscheme
-"   <leader>c
-"       write line to macOS clipboard
 "   <leader>a
 "       enable ALE (LSP client) and set omnifunc " :set omnifunc=ale#completion#OmniFunc<CR>
 "   <leader>h
@@ -66,13 +66,13 @@ colorscheme everforest
 "       Toggle Shizukesa
 "
 
+nnoremap <silent> <C-j> <C-]>
 nnoremap <silent> <C-l> :nohlsearch<C-r>=has('diff')?'<Bar>diffupdate':''<cr><cr><C-l>
 nnoremap <silent> <leader>f :set fen!<cr>
 nnoremap <silent> <leader>cb :!wal -i ~/Pictures/backgrounds --saturate 0.8<cr><cr>
 nnoremap <silent> <leader>cw :!wal -l -i ~/Pictures/backgrounds --saturate 0.8<cr><cr>
 nnoremap <silent> <leader>cd :!wal -f random<cr><cr>
 nnoremap <silent> <leader>cl :!wal -f random_light<cr><cr>
-noremap  <silent> <leader>c :w !pbcopy<cr><cr>
 nnoremap <silent> <leader>a :ALEEnable<cr>
 nnoremap <silent> <leader>h :ALEDetail<cr>
 nnoremap <silent> <leader>ca :ALECodeAction<cr>
@@ -83,6 +83,17 @@ nnoremap <silent> <leader>m :make<cr><cr><cr>
 nnoremap <silent> <leader>cp :cp<cr>
 nnoremap <silent> <leader>cn :cn<cr>
 nnoremap <silent> <leader>er :vsplit ~/.vim/README.md<cr>
+
+" GHC: Grep for the word under the cursor in compiler
+nnoremap <silent> <leader>w :vimgrep /<c-r><c-w>/ compiler/** <bar> :copen <CR>
+
+" Wiki: Go to wiki index
+nnoremap <silent> <leader>ww :tabe ~/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/Romes\ Vault/ <CR>
+
+" Set function key 24 escape sequence on this computer
+" Use Ctrl+v+Fn24 to get control sequence for F24
+nnoremap <silent> <ESC>[24;2~ :make<cr>
+
 
 " }}}
 " ======== Insert Mode ========= {{{
@@ -107,6 +118,12 @@ vnoremap K :m '<-2<cr>gv=gv
 
 " }}}
 " ======== Plugins ============= {{{
+
+" ======== VimWiki ============= {{{
+let g:vimwiki_list = [{'path': '~/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/Romes\ Vault/',
+                      \ 'syntax': 'markdown', 'ext': '.md'}]
+let g:vimwiki_global_ext = 0
+" }}}
 
 " ======== Netrw =============== {{{
 
@@ -173,6 +190,7 @@ vnoremap <C-i> :<C-u>call unicoder#selection()<CR>
 " FA : ∀
 " TE : ∃
 " a* : α
+" -T : ⊥
 "
 " For unicode symbols not associated with a digraph, we can insert them by
 " name and with the unicode autocomplete command <Ctrl+x+z>
