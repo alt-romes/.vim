@@ -51,8 +51,10 @@ set statusline+=%0*%(\ %r%)                                  | " Read-only flag
 set statusline+=%(\ %h%)                                     | " Help flag
 set statusline+=%(\ %w%)                                     | " Preview flag
 
-set statusline+=%0*%=                                        | " Switch to right-side
+" Temp. set to %6 instead of %0 to hide stuff
+set statusline+=%6*%=                                        | " Switch to right-side
 
+set statusline+=%(\ %{FugitiveStatusline()}\ %)                | " Fugitive
 set statusline+=%2*%(\ %{&filetype}\ %)                      | " Filetype
 
 if exists('g:statusline_more_colors') && g:statusline_more_colors
@@ -92,14 +94,14 @@ endfunc
 " call ReverseHiGroup("StatusLine", "User2")
 " call ReverseHiGroup("StatusLine", "User3")
 
-if g:colors_name != "romes"                                  | " Highlight statusline when using a normal colorscheme
-
-    hi link User1 Visual
-    hi link User2 User1
-    hi link User3 User1
-    hi link User4 Normal
-    hi link User5 User4
-endif
+" if !exists("g:colors_name") || g:colors_name != "romes"     | " Highlight statusline when using a normal colorscheme
+"     hi link User1 Special
+"     hi link User2 Identifier
+"     hi link User3 Blue
+"     hi link User4 Constant
+"     hi link User5 Statement
+"     hi link User6 User5
+" endif
 
 " ======== Notes ================
 "   1 - %(...%) defines an item group;

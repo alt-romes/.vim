@@ -10,13 +10,13 @@ if !exists('g:statusline_highlight')
     let g:statusline_highlight   = 1 + localtime() % 2       | " Statusline highlighting mode (available: 1, 2)
 endif
 
-set notermguicolors | " This colorscheme breaks with termguicolors
+" set notermguicolors | " This colorscheme breaks with termguicolors
 
                                                              " Load the base colorscheme
 " packadd! wal.vim                                             | " Add optional wal.vim to runtimepath
 " runtime colors/wal.vim                                       | " Load colorscheme (wal)
 
-hi Normal ctermbg=NONE ctermfg=7
+hi Normal ctermbg=NONE ctermfg=7 guibg=NONE
 hi NonText ctermbg=NONE ctermfg=0
 hi Comment ctermbg=NONE ctermfg=8
 hi Conceal ctermbg=NONE

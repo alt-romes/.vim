@@ -21,4 +21,4 @@ function! Swap()
     normal gvv
 endfunction
 
-nnoremap <leader>s :call Swap()<cr>
+" nnoremap <leader>s :call Swap()<cr>

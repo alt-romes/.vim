@@ -24,22 +24,54 @@ set undofile undodir=$HOME/.vim/undofiles | " Persistent undo (:h persistent-und
 set backspace=indent,eol,start            | " Make backspace work as expected
 set path+=**                              | " Recursively search subdirectories (when using gf, :tabfind, et cetera)
 set nofoldenable foldmethod=marker        | " Fold with markers (e.g. set in a modeline to marker), open by default
-set termguicolors                         | " When compiled with +termguicolors enables better colors
+set termguicolors                         | " When compiled with +termguicolors, use the gui colors in the terminal; to use the romes colorscheme you probably want to unset this, since it depends on the terminal non-gui colors
 set clipboard^=unnamed                    | " Share clipboard between vim and system
+set conceallevel=2                        | " Conceal level to hide typesetting details
+set smartcase                             | " Will use case-sensitive if capital or \C letter is present
 
 let g:tex_flavor='latex'                  | " Set TeX flavor to LaTeX
 
 let g:statusline_more_colors=1            | " Use more colors in the custom statusline
-colorscheme romes                         | " Select colorscheme
-highlight Comment cterm=italic            | " Highlight comments in italic
+let g:statusline_highlight=2              | " Set the highlighting mode for the statusline
+" colorscheme romes                         | " Select colorscheme and set statusline
 
 " Colorschemes
+" Note: Either iTerm's colorscheme matches the colorscheme, or the transparent
+" background must be disabled in the lines below.
 packadd! everforest
+packadd! nightfox.nvim
+let g:everforest_background = 'medium'
+let g:everforest_better_performance = 1
 " colorscheme everforest
+" colorscheme seoul256
 " colorscheme xcodedarkhc
 " colorscheme xcodelighthc
-let g:two_firewatch_italics=1
-colorscheme two-firewatch
+" colorscheme dawnfox
+" colorscheme terafox
+colorscheme dayfox
+" colorscheme nightfox
+" set background=light
+
+" highlight Normal ctermbg=NONE guibg=NONE  | " Use the terminal's background color -- this requires the terminal background color to be that of the vim colorscheme
+highlight Comment cterm=italic            | " Highlight comments in italic
+
+" colorscheme romes
+
+" Change cursor shape between insert and normal mode in iTerm2.app
+if $TERM_PROGRAM =~ "iTerm"
+    let &t_SI = "\<Esc>]50;CursorShape=1\x7" " Vertical bar in insert mode
+    let &t_EI = "\<Esc>]50;CursorShape=0\x7" " Block in normal mode
+endif
+
+" }}}
+" ======== GUI Options ========= {{{
+
+" One very cool thing about the gui version is the colorscheme working
+" flawlessly, without requiring changing things like the terminal colorscheme
+" too.
+
+set guifont=Menlo-Regular:h15             | " Set gui-vim font and size
+set guioptions=egm                        | " Remove scroll bars, I basically removed 'l' and 'r' from the default settings
 
 
 " }}}
@@ -47,7 +79,7 @@ colorscheme two-firewatch
 "
 "   <C-l>
 "       clear the highlighting of :set hlsearch.
-"   <leader>f
+"   <leader>gf
 "       toggle folds
 "   <leader>cd
 "       change to a random dark colorscheme
@@ -68,7 +100,7 @@ colorscheme two-firewatch
 
 nnoremap <silent> <C-j> <C-]>
 nnoremap <silent> <C-l> :nohlsearch<C-r>=has('diff')?'<Bar>diffupdate':''<cr><cr><C-l>
-nnoremap <silent> <leader>f :set fen!<cr>
+nnoremap <silent> <leader>sf :set fen!<cr>
 nnoremap <silent> <leader>cb :!wal -i ~/Pictures/backgrounds --saturate 0.8<cr><cr>
 nnoremap <silent> <leader>cw :!wal -l -i ~/Pictures/backgrounds --saturate 0.8<cr><cr>
 nnoremap <silent> <leader>cd :!wal -f random<cr><cr>
@@ -78,17 +110,21 @@ nnoremap <silent> <leader>h :ALEDetail<cr>
 nnoremap <silent> <leader>ca :ALECodeAction<cr>
 nnoremap <silent> <C-k> :ALEHover<cr><C-w>k
 nnoremap <silent> <leader>t :call ToggleNetrw()<cr>
-nnoremap <silent> <leader>g :call Shizukesa()<cr>
+nnoremap <silent> <leader>sh :call Shizukesa()<cr>
 nnoremap <silent> <leader>m :make<cr><cr><cr>
 nnoremap <silent> <leader>cp :cp<cr>
 nnoremap <silent> <leader>cn :cn<cr>
 nnoremap <silent> <leader>er :vsplit ~/.vim/README.md<cr>
 
 " GHC: Grep for the word under the cursor in compiler
-nnoremap <silent> <leader>w :vimgrep /<c-r><c-w>/ compiler/** <bar> :copen <CR>
+nnoremap <silent> <leader>w :vimgrep /\<<c-r><c-w>\>/ compiler/** <bar> :copen <CR>
+
+" DIFF: Diff the contents of registers @a@ and the lines currently selected
+" Dropped in favor of the linediff.vim plugin
+" vnoremap <silent> <leader>q y:vnew +put!a<cr>:new +put!<cr>:diffthis<cr><c-w><Down>:diffthis<cr>
 
 " Wiki: Go to wiki index
-nnoremap <silent> <leader>ww :tabe ~/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/Romes\ Vault/ <CR>
+nnoremap <silent> <leader>sw :tabe ~/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/Romes\ Vault/ <CR>
 
 " Set function key 24 escape sequence on this computer
 " Use Ctrl+v+Fn24 to get control sequence for F24
@@ -118,6 +154,33 @@ vnoremap K :m '<-2<cr>gv=gv
 
 " }}}
 " ======== Plugins ============= {{{
+
+" For some annoying reason we need to refresh this, it seems to be forgotten
+" somewhere, and it in $VIMRUNTIME/filetype.vim does not seem sufficient...
+runtime! ftdetect/*.vim
+
+" Configuration for tags
+" Update the Haskell tags file when file is saved.
+augroup tags
+au BufWritePost *.hs            silent !fast-tags --no-module-tags %
+au BufWritePost *.hsc           silent !fast-tags --no-module-tags %
+augroup END
+
+" Set runtimepath to include fzf, enabling the plugin Note that this path
+" depends on where fzf is installed on the system and most likely is different
+" from this.
+set runtimepath+=/opt/homebrew/opt/fzf
+
+" Map <leader>f to the fuzzy window finder command
+" Actually amazing.
+nnoremap <silent> <leader>f :FZF<cr>
+
+" fzf.vim's RipGrep function to combine fzf+ripgrep in a nice search popup
+" Mnemonic: g for grep
+nnoremap <silent> <leader>g :Rg<cr>
+
+" Use ripgrep by default for grepping
+set grepprg=rg\ --vimgrep
 
 " ======== VimWiki ============= {{{
 let g:vimwiki_list = [{'path': '~/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/Romes\ Vault/',
@@ -173,30 +236,32 @@ let g:ale_floating_preview = 1                                  | " Use floating
 let g:polyglot_disabled = ['autoindent']                        | " Disable autoindent from vim-polyglot
 
 " }}}
-" ======== Latex Unicoder ====== {{{
-let g:unicoder_no_map = 1
-nnoremap <leader>i :call unicoder#start(0)<CR>
-vnoremap <C-i> :<C-u>call unicoder#selection()<CR>
-" }}}
 " ======== Unicode.vim ========= {{{
 " Cheatsheet
 " :UnicodeTable or :UnicodeSearch to find existing symbols
+" :digraph to list all digraphs
+" Motion `ga` to query the unicode decimal number for the symbol under the cursor
 "
 " Digraphs are actually a native feature: Press <Ctrl+k> and a combination of
 " two letters to insert a digraph
-"
-" Otherwise, use <Ctrl+x+g> to autocomplete a symbol from two letters
 "
 " FA : ∀
 " TE : ∃
 " a* : α
 " -T : ⊥
 "
+" Otherwise, use <Ctrl+x+g> to autocomplete a symbol from two letters
+"
 " For unicode symbols not associated with a digraph, we can insert them by
 " name and with the unicode autocomplete command <Ctrl+x+z>
 "
 " elem : ∈
 "
+" Custom digraphs:
+
+" Linear Logic Lollipop ⊸
+digraph ll 8888
+
 " }}}
 
 " }}}
@@ -227,3 +292,11 @@ autocmd Filetype *
 " }}}}
 
 " vim: fdm=marker
+
+" Utilize pcalc inside of vim
+command! -nargs=1 Silent
+\ | execute ':silent !'.<q-args>
+\ | execute ':redraw!'
+command PCALC Silent pcalc
+
+filetype plugin indent on

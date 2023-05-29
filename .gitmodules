@@ -28,6 +28,18 @@
 [submodule "pack/romes/start/unicode.vim"]
 	path = pack/romes/start/unicode.vim
 	url = https://github.com/chrisbra/unicode.vim
-[submodule "pack/romes/start/vim-two-firewatch"]
-	path = pack/romes/start/vim-two-firewatch
-	url = https://github.com/rakr/vim-two-firewatch
+[submodule "pack/romes/start/fzf.vim"]
+	path = pack/romes/start/fzf.vim
+	url = https://github.com/junegunn/fzf.vim.git
+[submodule "pack/romes/start/vim-dafny"]
+	path = pack/romes/start/vim-dafny
+	url = git@github.com:benknoble/vim-dafny.git
+[submodule "pack/themes/opt/seoul256.vim"]
+	path = pack/themes/opt/seoul256.vim
+	url = https://github.com/junegunn/seoul256.vim.git
+[submodule "pack/themes/opt/nightfox.nvim"]
+	path = pack/themes/opt/nightfox.nvim
+	url = https://github.com/EdenEast/nightfox.nvim.git
+[submodule "pack/romes/start/vim-fugitive"]
+	path = pack/romes/start/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive
