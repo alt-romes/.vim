@@ -45,14 +45,16 @@ let g:everforest_better_performance = 1
 " colorscheme everforest
 " colorscheme seoul256
 " colorscheme xcodedarkhc
-" colorscheme xcodelighthc
+colorscheme xcodelight
 " colorscheme dawnfox
 " colorscheme terafox
-colorscheme dayfox
+" colorscheme terafox
+" colorscheme dayfox
 " colorscheme nightfox
 " set background=light
 
-" highlight Normal ctermbg=NONE guibg=NONE  | " Use the terminal's background color -- this requires the terminal background color to be that of the vim colorscheme
+highlight Normal ctermbg=NONE guibg=NONE  | " Use the terminal's background color - this requires the terminal background color to be that of the vim colorscheme
+                                            " Good for transparent terminals!
 highlight Comment cterm=italic            | " Highlight comments in italic
 
 " colorscheme romes
@@ -249,6 +251,7 @@ let g:polyglot_disabled = ['autoindent']                        | " Disable auto
 " TE : ∃
 " a* : α
 " -T : ⊥
+" (- : ∈
 "
 " Otherwise, use <Ctrl+x+g> to autocomplete a symbol from two letters
 "

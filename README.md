@@ -14,7 +14,6 @@ git clone --recurse-submodules https://github.com/alt-romes/.vim
 | vim-commentary        | https://github.com/tpope/vim-commentary | Minimalist commenting plugin |
 | vim-surround          | https://github.com/tpope/vim-surround   | Mappings for "surrounding"   |
 | vim-polyglot          | https://github.com/sheerun/vim-polyglot | Language pack                |
-| unicoder              | https://github.com/chrisbra/unicode.vim | Input Unicode syntax         |
 | emmet-vim (to be opt) | https://github.com/mattn/emmet-vim      | HTML and CSS                 |
 
 ---
