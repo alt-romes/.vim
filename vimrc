@@ -28,6 +28,9 @@ set termguicolors                         | " When compiled with +termguicolors,
 set clipboard^=unnamed                    | " Share clipboard between vim and system
 set conceallevel=2                        | " Conceal level to hide typesetting details
 set smartcase                             | " Will use case-sensitive if capital or \C letter is present
+set smarttab                              | " Makes tabbing smarter will realize you have 2 vs 4, and default to tabstop/tabwidth when not obvious
+set cursorline cursorlineopt=both         | " Highlight the line number of the cursor line (cursorlineopt=number is also good)
+
 
 let g:tex_flavor='latex'                  | " Set TeX flavor to LaTeX
 
@@ -42,20 +45,24 @@ packadd! everforest
 packadd! nightfox.nvim
 let g:everforest_background = 'medium'
 let g:everforest_better_performance = 1
+let g:github_colors_block_diffmark = 1
 " colorscheme everforest
 " colorscheme seoul256
 " colorscheme xcodedarkhc
-colorscheme xcodelight
+" colorscheme xcodedark
+" colorscheme xcodelight
 " colorscheme dawnfox
 " colorscheme terafox
-" colorscheme terafox
+" colorscheme carbonfox
+" colorscheme ayu
 " colorscheme dayfox
 " colorscheme nightfox
-" set background=light
+colorscheme github
+set background=light
 
-highlight Normal ctermbg=NONE guibg=NONE  | " Use the terminal's background color - this requires the terminal background color to be that of the vim colorscheme
+" highlight Normal ctermbg=NONE guibg=NONE  | " Use the terminal's background color - this requires the terminal background color to be that of the vim colorscheme
                                             " Good for transparent terminals!
-highlight Comment cterm=italic            | " Highlight comments in italic
+" highlight Comment cterm=italic            | " Highlight comments in italic
 
 " colorscheme romes
 
@@ -72,7 +79,7 @@ endif
 " flawlessly, without requiring changing things like the terminal colorscheme
 " too.
 
-set guifont=Menlo-Regular:h15             | " Set gui-vim font and size
+set guifont=Menlo-Regular:h14             | " Set gui-vim font and size
 set guioptions=egm                        | " Remove scroll bars, I basically removed 'l' and 'r' from the default settings
 
 
@@ -110,6 +117,7 @@ nnoremap <silent> <leader>cl :!wal -f random_light<cr><cr>
 nnoremap <silent> <leader>a :ALEEnable<cr>
 nnoremap <silent> <leader>h :ALEDetail<cr>
 nnoremap <silent> <leader>ca :ALECodeAction<cr>
+nnoremap <silent> <leader>qf :ALEPopulateQuickfix<cr>
 nnoremap <silent> <C-k> :ALEHover<cr><C-w>k
 nnoremap <silent> <leader>t :call ToggleNetrw()<cr>
 nnoremap <silent> <leader>sh :call Shizukesa()<cr>
@@ -117,6 +125,12 @@ nnoremap <silent> <leader>m :make<cr><cr><cr>
 nnoremap <silent> <leader>cp :cp<cr>
 nnoremap <silent> <leader>cn :cn<cr>
 nnoremap <silent> <leader>er :vsplit ~/.vim/README.md<cr>
+nnoremap <silent> gl g_
+nnoremap <silent> gh ^
+
+" Insert 80 `-` characters to make a line like:
+" --------------------------------------------
+nnoremap <silent> <leader>- :normal 80i-<cr>
 
 " GHC: Grep for the word under the cursor in compiler
 nnoremap <silent> <leader>w :vimgrep /\<<c-r><c-w>\>/ compiler/** <bar> :copen <CR>
@@ -185,11 +199,18 @@ nnoremap <silent> <leader>g :Rg<cr>
 set grepprg=rg\ --vimgrep
 
 " ======== VimWiki ============= {{{
-let g:vimwiki_list = [{'path': '~/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/Romes\ Vault/',
-                      \ 'syntax': 'markdown', 'ext': '.md'}]
+let g:vimwiki_list = [{ 'path': '~/wiki',
+                      \ 'path_html': '~/control/site/docs/wiki',
+                      \ 'syntax': 'markdown', 'ext': '.md',
+                      \ 'custom_wiki2html': '~/.vim/vimwiki2html.py' }]
+                      " \ 'css_file': ...
 let g:vimwiki_global_ext = 0
-" }}}
 
+" Notes:
+" Check all links are OK with :VimwikiCheckLinks
+nnoremap <silent> <leader>wc :VimwikiCheckLinks<cr>
+
+" }}}
 " ======== Netrw =============== {{{
 
 let g:romes_netrw_enabled = 0                  | " Global netrw variable for toggle
@@ -229,8 +250,32 @@ let g:ale_lsp_suggestions = 1                                   | " Show hints/s
 
 let g:ale_floating_preview = 1                                  | " Use floating window preview
 
+let g:ale_virtualtext_cursor = 0                                | " Don't show error messages inline
+
+let g:ale_sign_highlight_linenrs = 1                            | " Highlight line numbers in sign column, besides highlighting the sign
+
 " let g:ale_completion_enabled = 1                              | " TODO: help ale-completion
 " let g:ale_completion_autoimport = 1                           | " Automatically import external modules for completion
+
+" Always highlight the SignLineNr as the sign
+highlight link ALEErrorSignLineNr ALEErrorSign
+highlight link ALEWarningSignLineNr ALEWarningSign
+
+" Fix highlighting by linking to Coc in vim-github-colors
+if g:colors_name == 'github'
+    highlight link ALEError CocErrorHighlight
+    highlight link ALEWarning CocWarningHighlight
+
+    " Alternative
+    highlight link ALEErrorSign CocErrorSign
+    highlight link ALEWarningSign CocWarningSign
+    highlight link ALESignColumnWithErrors ALEErrorSign
+
+    " Alternative
+    " highlight link ALEErrorSign ALEError
+    " highlight link ALEWarningSign ALEWarning
+    " highlight link ALESignColumnWithErrors ALEErrorSign
+endif
 
 " }}}
 " ======== Polyglot ============ {{{
@@ -264,6 +309,10 @@ let g:polyglot_disabled = ['autoindent']                        | " Disable auto
 
 " Linear Logic Lollipop ⊸
 digraph ll 8888
+" Turnstile \vdash
+digraph \|- 8870
+" Set difference
+digraph \\ 8726
 
 " }}}
 
@@ -275,6 +324,12 @@ autocmd Filetype *
     \	if &omnifunc == "" |
     \		setlocal omnifunc=syntaxcomplete#Complete | " :help ft-syntax-omni
     \	endif
+
+" Utilize pcalc inside of vim
+command! -nargs=1 Silent
+\ | execute ':silent !'.<q-args>
+\ | execute ':redraw!'
+command PCALC Silent pcalc
 
 " }}}
 " ======== Notes =============== {{{
@@ -295,11 +350,3 @@ autocmd Filetype *
 " }}}}
 
 " vim: fdm=marker
-
-" Utilize pcalc inside of vim
-command! -nargs=1 Silent
-\ | execute ':silent !'.<q-args>
-\ | execute ':redraw!'
-command PCALC Silent pcalc
-
-filetype plugin indent on

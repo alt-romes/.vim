@@ -40,3 +40,12 @@
 [submodule "pack/romes/start/linediff.vim"]
 	path = pack/romes/start/linediff.vim
 	url = https://github.com/AndrewRadev/linediff.vim
+[submodule "pack/themes/opt/ayu-vim"]
+	path = pack/themes/opt/ayu-vim
+	url = git@github.com:ayu-theme/ayu-vim.git
+[submodule "pack/themes/opt/vim-colors-github"]
+	path = pack/themes/opt/vim-colors-github
+	url = git@github.com:cormacrelf/vim-colors-github.git
+[submodule "pack/romes/start/vimwiki"]
+	path = pack/romes/start/vimwiki
+	url = https://github.com/vimwiki/vimwiki
