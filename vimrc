@@ -43,6 +43,7 @@ let g:statusline_highlight=2              | " Set the highlighting mode for the 
 " background must be disabled in the lines below.
 packadd! everforest
 packadd! nightfox.nvim
+packadd! vim-colors-github
 let g:everforest_background = 'medium'
 let g:everforest_better_performance = 1
 let g:github_colors_block_diffmark = 1
@@ -65,6 +66,26 @@ set background=light
 " highlight Comment cterm=italic            | " Highlight comments in italic
 
 " colorscheme romes
+
+" ======== Lightline =========== {{{
+" We're using lightline again, to get nice colorschemes and changing colors on
+" changing modes, which was becoming harder using our custom plugin/statusline
+"
+" I still prefer my statusline, but the lightline colorschemes are better and
+" are widely available with colorschemes
+let g:lightline = {
+  \ 'colorscheme': 'github',
+  \ 'active': {
+  \   'right': [ [ 'lineinfo' ],
+  \              [ 'percent' ],
+  \              [ 'filetype', 'gitbranch', 'filesize', 'fileencoding' ] ]
+  \ },
+  \ 'component_function': {
+  \     'filesize': 'FileSize',
+  \     'gitbranch': 'FugitiveHead',
+  \ }
+  \ }
+" }}}
 
 " Change cursor shape between insert and normal mode in iTerm2.app
 if $TERM_PROGRAM =~ "iTerm"
@@ -349,4 +370,5 @@ command PCALC Silent pcalc
 "
 " }}}}
 
+" foldenable
 " vim: fdm=marker

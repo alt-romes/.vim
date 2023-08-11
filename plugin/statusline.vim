@@ -34,6 +34,27 @@ function! FileSize() abort
     endif
 endfunction
 
+" Taken from https://github.com/dhruvasagar/dotfiles/blob/master/vim/plugin/statusline.vim
+function! StatusLineALE() abort
+  if !exists(':ALE*')
+    return ''
+  endif
+  let l:s = []
+  let ale = ale#statusline#Count(bufnr('%'))
+  if ale['error'] > 0
+    call add(l:s, 'E: ' . ale['error'])
+  endif
+  if ale['warning'] > 0
+    call add(l:s, 'W: ' . ale['warning'])
+  endif
+  if ale['total'] > 0
+    call add(l:s, 'T: ' . ale['total'])
+  endif
+  if !empty(l:s)
+    return '[ALE '.join(l:s, ',').']'
+  endif
+  return ''
+endfunction
 
 set statusline=%1*\ %{mode_map[mode()]}\                     | " Mode
 
@@ -54,7 +75,7 @@ set statusline+=%(\ %w%)                                     | " Preview flag
 " Temp. set to %6 instead of %0 to hide stuff
 set statusline+=%6*%=                                        | " Switch to right-side
 
-set statusline+=%(\ %{FugitiveStatusline()}\ %)                | " Fugitive
+set statusline+=%(\ %{FugitiveStatusline()}\ %)              | " Fugitive
 set statusline+=%2*%(\ %{&filetype}\ %)                      | " Filetype
 
 if exists('g:statusline_more_colors') && g:statusline_more_colors
@@ -101,6 +122,14 @@ endfunc
 "     hi link User4 Constant
 "     hi link User5 Statement
 "     hi link User6 User5
+" endif
+
+" Highlights for specific colorschemes
+
+" if g:colors_name == 'github'
+"     highlight link User1 airline
+"     highlight link ALEWarning CocWarningHighlight
+"     highlight link ALEWarning CocWarningHighlight
 " endif
 
 " ======== Notes ================
