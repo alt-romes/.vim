@@ -51,14 +51,14 @@ let g:github_colors_block_diffmark = 1
 " colorscheme seoul256
 " colorscheme xcodedarkhc
 " colorscheme xcodedark
-" colorscheme xcodelight
 " colorscheme dawnfox
 " colorscheme terafox
 " colorscheme carbonfox
 " colorscheme ayu
 " colorscheme dayfox
 " colorscheme nightfox
-colorscheme github
+" colorscheme xcodelight
+" colorscheme github
 set background=light
 
 " highlight Normal ctermbg=NONE guibg=NONE  | " Use the terminal's background color - this requires the terminal background color to be that of the vim colorscheme
@@ -67,14 +67,16 @@ set background=light
 
 " colorscheme romes
 
+" packadd! lightline.vim
 " ======== Lightline =========== {{{
 " We're using lightline again, to get nice colorschemes and changing colors on
 " changing modes, which was becoming harder using our custom plugin/statusline
 "
 " I still prefer my statusline, but the lightline colorschemes are better and
 " are widely available with colorschemes
+" \ 'colorscheme': 'nightfox',
 let g:lightline = {
-  \ 'colorscheme': 'github',
+  \ 'colorscheme': 'seoul256',
   \ 'active': {
   \   'right': [ [ 'lineinfo' ],
   \              [ 'percent' ],
@@ -283,7 +285,7 @@ highlight link ALEErrorSignLineNr ALEErrorSign
 highlight link ALEWarningSignLineNr ALEWarningSign
 
 " Fix highlighting by linking to Coc in vim-github-colors
-if g:colors_name == 'github'
+if exists("g:colors_name") && g:colors_name == 'github'
     highlight link ALEError CocErrorHighlight
     highlight link ALEWarning CocWarningHighlight
 
