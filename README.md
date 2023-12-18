@@ -68,3 +68,17 @@ set statusline+=%(\ %{&fenc?&fenc:&enc}\ \|%) " Encoding
 set statusline+=\ %p%%\                       " Percentage
 set statusline+=%3*\ %3l:%-2c\                " Line:Column
 ```
+
+---
+
+## Markers
+
+For latex slides, use
+```
+set foldmethod=marker foldmarker=\\begin{frame},\\end{frame}
+```
+Additionally, add
+```
+% vim: foldmethod=marker foldmarker=\\begin{frame},\\end{frame}
+```
+To the bottom of the file to set that option for that file always
