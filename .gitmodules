@@ -49,6 +49,6 @@
 [submodule "pack/romes/start/vimwiki"]
 	path = pack/romes/start/vimwiki
 	url = https://github.com/vimwiki/vimwiki
-[submodule "pack/romes/start/lightline.vim"]
+[submodule "pack/romes/opt/lightline.vim"]
 	path = pack/romes/opt/lightline.vim
 	url = https://github.com/itchyny/lightline.vim.git
