@@ -1,6 +1,6 @@
 let b:ale_linters = ['hls']
 
-set expandtab tabstop=2 shiftwidth=2      | " Indent by 2 spaces
+setlocal expandtab tabstop=2 shiftwidth=2 | " Indent by 2 spaces
 
 let g:ale_haskell_hls_config = {'haskell': {'formattingProvider': 'fourmolu'}}
 
