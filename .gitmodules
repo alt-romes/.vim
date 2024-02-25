@@ -55,3 +55,6 @@
 [submodule "pack/themes/opt/papercolor-theme"]
 	path = pack/themes/opt/papercolor-theme
 	url = https://github.com/NLKNguyen/papercolor-theme.git
+[submodule "pack/romes/start/dash.vim"]
+	path = pack/romes/start/dash.vim
+	url = https://github.com/rizzatti/dash.vim.git
