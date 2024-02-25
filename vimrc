@@ -30,7 +30,7 @@ set conceallevel=2                        | " Conceal level to hide typesetting 
 set smartcase                             | " Will use case-sensitive if capital or \C letter is present
 set smarttab                              | " Makes tabbing smarter will realize you have 2 vs 4, and default to tabstop/tabwidth when not obvious
 set cursorline cursorlineopt=both         | " Highlight the line number of the cursor line (cursorlineopt=number is also good)
-
+set swapfile                              | " We want swapfiles, and use vim's macOS default 'directory' option, which is within ~/Library
 
 let g:tex_flavor='latex'                  | " Set TeX flavor to LaTeX
 
@@ -44,6 +44,8 @@ let g:statusline_highlight=2              | " Set the highlighting mode for the 
 packadd! everforest
 packadd! nightfox.nvim
 packadd! vim-colors-github
+packadd! papercolor-theme
+let g:PaperColor_Theme_Options = {'theme': {'default': {'transparent_background': 1}}}
 let g:everforest_background = 'medium'
 let g:everforest_better_performance = 1
 let g:github_colors_block_diffmark = 1
@@ -59,7 +61,8 @@ let g:github_colors_block_diffmark = 1
 " colorscheme nightfox
 " colorscheme xcodelight
 " colorscheme github
-set background=light
+colorscheme PaperColor
+" set background=dark
 
 " highlight Normal ctermbg=NONE guibg=NONE  | " Use the terminal's background color - this requires the terminal background color to be that of the vim colorscheme
                                             " Good for transparent terminals!
@@ -67,7 +70,7 @@ set background=light
 
 " colorscheme romes
 
-" packadd! lightline.vim
+packadd! lightline.vim
 " ======== Lightline =========== {{{
 " We're using lightline again, to get nice colorschemes and changing colors on
 " changing modes, which was becoming harder using our custom plugin/statusline
@@ -76,7 +79,7 @@ set background=light
 " are widely available with colorschemes
 " \ 'colorscheme': 'nightfox',
 let g:lightline = {
-  \ 'colorscheme': 'seoul256',
+  \ 'colorscheme': 'everforest',
   \ 'active': {
   \   'right': [ [ 'lineinfo' ],
   \              [ 'percent' ],

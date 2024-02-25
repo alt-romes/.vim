@@ -52,3 +52,6 @@
 [submodule "pack/romes/opt/lightline.vim"]
 	path = pack/romes/opt/lightline.vim
 	url = https://github.com/itchyny/lightline.vim.git
+[submodule "pack/themes/opt/papercolor-theme"]
+	path = pack/themes/opt/papercolor-theme
+	url = https://github.com/NLKNguyen/papercolor-theme.git
