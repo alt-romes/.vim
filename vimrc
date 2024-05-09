@@ -45,12 +45,14 @@ packadd! everforest
 packadd! nightfox.nvim
 packadd! vim-colors-github
 packadd! papercolor-theme
-let g:PaperColor_Theme_Options = {'theme': {'default': {'transparent_background': 1}}}
+" let g:PaperColor_Theme_Options = {'theme': {'default': {'transparent_background': 1}}}
 let g:everforest_background = 'medium'
 let g:everforest_better_performance = 1
+let g:everforest_transparent_background = 2
+let g:everforest_ui_contrast = 'high'
 let g:github_colors_block_diffmark = 1
 " colorscheme everforest
-" colorscheme seoul256
+colorscheme seoul256
 " colorscheme xcodedarkhc
 " colorscheme xcodedark
 " colorscheme dawnfox
@@ -61,8 +63,7 @@ let g:github_colors_block_diffmark = 1
 " colorscheme nightfox
 " colorscheme xcodelight
 " colorscheme github
-colorscheme PaperColor
-" set background=dark
+set background=light
 
 " highlight Normal ctermbg=NONE guibg=NONE  | " Use the terminal's background color - this requires the terminal background color to be that of the vim colorscheme
                                             " Good for transparent terminals!
@@ -79,7 +80,7 @@ packadd! lightline.vim
 " are widely available with colorschemes
 " \ 'colorscheme': 'nightfox',
 let g:lightline = {
-  \ 'colorscheme': 'everforest',
+  \ 'colorscheme': 'PaperColor',
   \ 'active': {
   \   'right': [ [ 'lineinfo' ],
   \              [ 'percent' ],
@@ -131,7 +132,10 @@ set guioptions=egm                        | " Remove scroll bars, I basically re
 "       Toggle netrw file browser in the directory of the file
 "   <leader>g
 "       Toggle Shizukesa
-"
+"   <leader>ev
+"       Edit this file
+"   <leader>ec
+"       Edit the cabal file in the workdir
 
 nnoremap <silent> <C-j> <C-]>
 nnoremap <silent> <C-l> :nohlsearch<C-r>=has('diff')?'<Bar>diffupdate':''<cr><cr><C-l>
@@ -150,7 +154,8 @@ nnoremap <silent> <leader>sh :call Shizukesa()<cr>
 nnoremap <silent> <leader>m :make<cr><cr><cr>
 nnoremap <silent> <leader>cp :cp<cr>
 nnoremap <silent> <leader>cn :cn<cr>
-nnoremap <silent> <leader>er :vsplit ~/.vim/README.md<cr>
+nnoremap <silent> <leader>ev :vsplit ~/.vim/vimrc<cr>
+nnoremap <silent> <leader>ec :tabe *.cabal<cr>
 nnoremap <silent> gl g_
 nnoremap <silent> gh ^
 
@@ -323,6 +328,9 @@ let g:polyglot_disabled = ['autoindent']                        | " Disable auto
 " a* : α
 " -T : ⊥
 " (- : ∈
+" Ob : ∘
+" *X : ×
+"
 "
 " Otherwise, use <Ctrl+x+g> to autocomplete a symbol from two letters
 "
@@ -339,6 +347,8 @@ digraph ll 8888
 digraph \|- 8870
 " Set difference
 digraph \\ 8726
+" Circled times
+digraph cX 8855
 
 " }}}
 
