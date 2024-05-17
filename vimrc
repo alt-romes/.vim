@@ -52,15 +52,8 @@ let g:everforest_transparent_background = 2
 let g:everforest_ui_contrast = 'high'
 let g:github_colors_block_diffmark = 1
 " colorscheme everforest
-colorscheme seoul256
-" colorscheme xcodedarkhc
+" colorscheme seoul256
 " colorscheme xcodedark
-" colorscheme dawnfox
-" colorscheme terafox
-" colorscheme carbonfox
-" colorscheme ayu
-" colorscheme dayfox
-" colorscheme nightfox
 " colorscheme xcodelight
 " colorscheme github
 set background=light
