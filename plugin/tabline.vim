@@ -48,7 +48,7 @@ function! MakeTabLine()
     endfor
 
     " after the last tab fill with TabLineFill and reset tab page nr
-    let s .= '%#TabLineFill#%T'
+    let s .= '%#TabLine#%T'
 
     " right-align the label to close the current tab page
     if tabpagenr('$') > 1
