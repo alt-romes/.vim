@@ -13,6 +13,15 @@
 [submodule "pack/romes/start/vim-surround"]
 	path = pack/romes/start/vim-surround
 	url = https://github.com/tpope/vim-surround
+[submodule "pack/romes/start/linediff.vim"]
+	path = pack/romes/start/linediff.vim
+	url = https://github.com/AndrewRadev/linediff.vim
+[submodule "pack/romes/start/fzf.vim"]
+	path = pack/romes/start/fzf.vim
+	url = https://github.com/junegunn/fzf.vim.git
+[submodule "pack/romes/start/vim-fugitive"]
+	path = pack/romes/start/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive
 [submodule "pack/romes/start/emmet-vim"]
 	path = pack/romes/start/emmet-vim
 	url = https://github.com/mattn/emmet-vim.git
@@ -25,36 +34,9 @@
 [submodule "pack/themes/opt/vim-colors-xcode"]
 	path = pack/themes/opt/vim-colors-xcode
 	url = https://github.com/arzg/vim-colors-xcode
-[submodule "pack/romes/start/fzf.vim"]
-	path = pack/romes/start/fzf.vim
-	url = https://github.com/junegunn/fzf.vim.git
 [submodule "pack/themes/opt/seoul256.vim"]
 	path = pack/themes/opt/seoul256.vim
 	url = https://github.com/junegunn/seoul256.vim.git
-[submodule "pack/themes/opt/nightfox.nvim"]
-	path = pack/themes/opt/nightfox.nvim
-	url = https://github.com/EdenEast/nightfox.nvim.git
-[submodule "pack/romes/start/vim-fugitive"]
-	path = pack/romes/start/vim-fugitive
-	url = https://github.com/tpope/vim-fugitive
-[submodule "pack/romes/start/linediff.vim"]
-	path = pack/romes/start/linediff.vim
-	url = https://github.com/AndrewRadev/linediff.vim
-[submodule "pack/themes/opt/ayu-vim"]
-	path = pack/themes/opt/ayu-vim
-	url = git@github.com:ayu-theme/ayu-vim.git
-[submodule "pack/themes/opt/vim-colors-github"]
-	path = pack/themes/opt/vim-colors-github
-	url = git@github.com:cormacrelf/vim-colors-github.git
 [submodule "pack/romes/start/vimwiki"]
 	path = pack/romes/start/vimwiki
 	url = https://github.com/vimwiki/vimwiki
-[submodule "pack/romes/opt/lightline.vim"]
-	path = pack/romes/opt/lightline.vim
-	url = https://github.com/itchyny/lightline.vim.git
-[submodule "pack/themes/opt/papercolor-theme"]
-	path = pack/themes/opt/papercolor-theme
-	url = https://github.com/NLKNguyen/papercolor-theme.git
-[submodule "pack/romes/start/dash.vim"]
-	path = pack/romes/start/dash.vim
-	url = https://github.com/rizzatti/dash.vim.git
