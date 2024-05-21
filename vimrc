@@ -44,10 +44,6 @@ let g:statusline_highlight=2              | " Set the highlighting mode for the 
 " Note: Either iTerm's colorscheme matches the colorscheme, or the transparent
 " background must be disabled in the lines below.
 packadd! everforest
-packadd! nightfox.nvim
-packadd! vim-colors-github
-packadd! papercolor-theme
-" let g:PaperColor_Theme_Options = {'theme': {'default': {'transparent_background': 1}}}
 let g:everforest_background = 'medium'
 let g:everforest_better_performance = 1
 let g:everforest_transparent_background = 2
@@ -57,7 +53,6 @@ let g:github_colors_block_diffmark = 1
 " colorscheme seoul256
 " colorscheme xcodedark
 " colorscheme xcodelight
-" colorscheme github
 set background=light
 
 " highlight Normal ctermbg=NONE guibg=NONE  | " Use the terminal's background color - this requires the terminal background color to be that of the vim colorscheme
@@ -65,28 +60,6 @@ set background=light
 " highlight Comment cterm=italic            | " Highlight comments in italic
 
 " colorscheme romes
-
-" ======== Lightline =========== {{{
-" packadd! lightline.vim
-" We're using lightline again, to get nice colorschemes and changing colors on
-" changing modes, which was becoming harder using our custom plugin/statusline
-"
-" I still prefer my statusline, but the lightline colorschemes are better and
-" are widely available with colorschemes
-" \ 'colorscheme': 'nightfox',
-" let g:lightline = {
-"   \ 'colorscheme': 'PaperColor',
-"   \ 'active': {
-"   \   'right': [ [ 'lineinfo' ],
-"   \              [ 'percent' ],
-"   \              [ 'filetype', 'gitbranch', 'filesize', 'fileencoding' ] ]
-"   \ },
-"   \ 'component_function': {
-"   \     'filesize': 'FileSize',
-"   \     'gitbranch': 'FugitiveHead',
-"   \ }
-"   \ }
-" }}}
 
 " Change cursor shape between insert and normal mode in iTerm2.app
 if $TERM_PROGRAM =~ "iTerm"
