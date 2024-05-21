@@ -94,12 +94,13 @@ endfunc
 " call ReverseHiGroup("StatusLine", "User3")
 
 if !exists("g:colors_name") || g:colors_name != "romes"     | " Highlight statusline when using a normal colorscheme
-    hi link User1 Special
-    hi link User2 Identifier
-    hi link User3 Blue
-    hi link User4 Constant
-    hi link User5 Statement
-    hi link User6 User5
+    hi link User1 StatusLineTerm
+    " hi link User2 StatusLineTerm
+    " hi link User3 StatusLineTerm
+
+    " hi link User4 StatusLineTerm
+    " hi link User5 Statement
+    " hi link User6 User5
 endif
 
 " Highlights for specific colorschemes
