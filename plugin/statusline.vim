@@ -53,7 +53,7 @@ set statusline+=%(\ %w%)                                     | " Preview flag
 " Temp. set to %6 instead of %0 to hide stuff
 set statusline+=%6*%=                                        | " Switch to right-side
 
-set statusline+=%(\ %{FugitiveStatusline()}\ %)              | " Fugitive
+" set statusline+=%(\ %{FugitiveStatusline()}\ %)              | " Fugitive
 set statusline+=%2*%(\ %{&filetype}\ %)                      | " Filetype
 
 if exists('g:statusline_more_colors') && g:statusline_more_colors
@@ -93,18 +93,18 @@ endfunc
 " call ReverseHiGroup("StatusLine", "User2")
 " call ReverseHiGroup("StatusLine", "User3")
 
-" if !exists("g:colors_name") || g:colors_name != "romes"     | " Highlight statusline when using a normal colorscheme
-"     hi link User1 Special
-"     hi link User2 Identifier
-"     hi link User3 Blue
-"     hi link User4 Constant
-"     hi link User5 Statement
-"     hi link User6 User5
-" endif
+if !exists("g:colors_name") || g:colors_name != "romes"     | " Highlight statusline when using a normal colorscheme
+    hi link User1 Special
+    hi link User2 Identifier
+    hi link User3 Blue
+    hi link User4 Constant
+    hi link User5 Statement
+    hi link User6 User5
+endif
 
 " Highlights for specific colorschemes
 
-" if g:colors_name == 'github'
+" if exists("g:colors_name") && g:colors_name == 'github'
 "     highlight link User1 airline
 "     highlight link ALEWarning CocWarningHighlight
 "     highlight link ALEWarning CocWarningHighlight

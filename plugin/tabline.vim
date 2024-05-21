@@ -1,7 +1,5 @@
 " Author: romes
 
-set showtabline=1 | " Enable tabline when tabs > 1
-
 let g:ja_number_map = ['一', '二', '三', '四', '五', '六', '七', '八', '九', '十']
 
 function MakeTabLabel(n)

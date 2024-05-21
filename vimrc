@@ -31,6 +31,8 @@ set smartcase                             | " Will use case-sensitive if capital
 set smarttab                              | " Makes tabbing smarter will realize you have 2 vs 4, and default to tabstop/tabwidth when not obvious
 set cursorline cursorlineopt=both         | " Highlight the line number of the cursor line (cursorlineopt=number is also good)
 set swapfile                              | " We want swapfiles, and use vim's macOS default 'directory' option, which is within ~/Library
+set showtabline=1                         | " Enable tabline when tabs > 1 (default)
+
 
 let g:tex_flavor='latex'                  | " Set TeX flavor to LaTeX
 
@@ -64,26 +66,26 @@ set background=light
 
 " colorscheme romes
 
-packadd! lightline.vim
 " ======== Lightline =========== {{{
+" packadd! lightline.vim
 " We're using lightline again, to get nice colorschemes and changing colors on
 " changing modes, which was becoming harder using our custom plugin/statusline
 "
 " I still prefer my statusline, but the lightline colorschemes are better and
 " are widely available with colorschemes
 " \ 'colorscheme': 'nightfox',
-let g:lightline = {
-  \ 'colorscheme': 'PaperColor',
-  \ 'active': {
-  \   'right': [ [ 'lineinfo' ],
-  \              [ 'percent' ],
-  \              [ 'filetype', 'gitbranch', 'filesize', 'fileencoding' ] ]
-  \ },
-  \ 'component_function': {
-  \     'filesize': 'FileSize',
-  \     'gitbranch': 'FugitiveHead',
-  \ }
-  \ }
+" let g:lightline = {
+"   \ 'colorscheme': 'PaperColor',
+"   \ 'active': {
+"   \   'right': [ [ 'lineinfo' ],
+"   \              [ 'percent' ],
+"   \              [ 'filetype', 'gitbranch', 'filesize', 'fileencoding' ] ]
+"   \ },
+"   \ 'component_function': {
+"   \     'filesize': 'FileSize',
+"   \     'gitbranch': 'FugitiveHead',
+"   \ }
+"   \ }
 " }}}
 
 " Change cursor shape between insert and normal mode in iTerm2.app
