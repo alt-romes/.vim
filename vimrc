@@ -49,11 +49,14 @@ let g:everforest_better_performance = 1
 let g:everforest_transparent_background = 2
 let g:everforest_ui_contrast = 'high'
 let g:github_colors_block_diffmark = 1
-" colorscheme everforest
+" colorscheme quiet
+colorscheme everforest
 " colorscheme seoul256
 " colorscheme xcodedark
 " colorscheme xcodelight
+" colorscheme seoul256-light
 set background=light
+set nocursorline " Override for when using the default colorscheme (without setting it! for some reason setting it screws it up)
 
 " highlight Normal ctermbg=NONE guibg=NONE  | " Use the terminal's background color - this requires the terminal background color to be that of the vim colorscheme
                                             " Good for transparent terminals!
@@ -98,14 +101,17 @@ set guioptions=egm                        | " Remove scroll bars, I basically re
 "       todo: somehow remap to K (as done with manpages)
 "   <leader>t
 "       Toggle netrw file browser in the directory of the file
-"   <leader>g
+"   <leader>sh
 "       Toggle Shizukesa
 "   <leader>ev
 "       Edit this file
 "   <leader>ec
 "       Edit the cabal file in the workdir
 
+" Tag Jumping
 nnoremap <silent> <C-j> <C-]>
+nnoremap <silent> g<C-j> :vert belowright split \| tag <C-r><C-w> <cr>
+
 nnoremap <silent> <C-l> :nohlsearch<C-r>=has('diff')?'<Bar>diffupdate':''<cr><cr><C-l>
 nnoremap <silent> <leader>sf :set fen!<cr>
 nnoremap <silent> <leader>cb :!wal -i ~/Pictures/backgrounds --saturate 0.8<cr><cr>
